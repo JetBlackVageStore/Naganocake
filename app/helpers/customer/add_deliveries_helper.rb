@@ -1,0 +1,2 @@
+module Customer::AddDeliveriesHelper
+end
