@@ -1,11 +1,11 @@
 class Admin::CustomersController < ApplicationController
-  before_action :authenticate_user!
+  # before_action :authenticate_user!
   # ログイン済のユーザのみアクセスの許可をする
   
   # アクションが足りていない気がする
   # カラム 追加、isdelete?系のブーリアンがた
   def index
-    @customers = Customers.all
+    @customers = User.all
   end
 
   def show
