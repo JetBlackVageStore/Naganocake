@@ -5,7 +5,7 @@ class Admin::CustomersController < ApplicationController
   # アクションが足りていない気がする
   # カラム 追加、isdelete?系のブーリアンがた
   def index
-    @customers = User.all
+    @customers = Customer.all
   end
 
   def show
