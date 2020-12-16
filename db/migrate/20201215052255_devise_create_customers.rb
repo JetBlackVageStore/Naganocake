@@ -8,11 +8,11 @@ class DeviseCreateCustomers < ActiveRecord::Migration[5.2]
       t.string :firstname
       t.string :surname_kana
       t.string :firstname_kana
-      t.string :email,              null: false, default: ""
+      t.string :email, null: false, default: ''
       t.string :postal_code
       t.string :address
       t.string :phone_number
-      t.string :encrypted_password, null: false, default: ""
+      t.string :encrypted_password, null: false, default: ''
 
       ## Recoverable
       t.string   :reset_password_token
