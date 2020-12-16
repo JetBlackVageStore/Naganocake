@@ -8,7 +8,7 @@ class Admin::GenresController < ApplicationController
   def show
   end
 
-  def upadate
+  def update
   end
 
   def edit

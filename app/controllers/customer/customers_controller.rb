@@ -5,7 +5,7 @@ class Customer::CustomersController < ApplicationController
   def edit
   end
 
-  def upadate
+  def update
   end
 
   def unsubscribe

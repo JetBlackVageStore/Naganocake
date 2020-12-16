@@ -1,79 +1,70 @@
 Rails.application.routes.draw do
-  namespace :admin do
-    get 'orders/index'
-    get 'orders/show'
-    get 'orders/update'
+
+  scope module: :customer do
+    resources :add_deliveries, only: %i[index create destroy edit update] do
+    end
+
+    resources :customers do
+      collection do
+        get 'customers/edit' => 'customers#edit'
+        patch 'customers' => 'customers#update'
+        get '/my_page' => 'customers#show'
+        get '/unsubscribe' => 'customers#unsubscribe'
+        patch '/withdraw' => 'customers#withdraw'
+      end
+    end
+
+    resources :into_carts, only: %i[index update destroy create] do
+      collection do
+        delete 'delete_all'
+      end
+    end
+
+    resources :items, only: %i[index show] do
+      collection do
+        get 'search'
+      end
+    end
+
+    resources :orders, only: %i[new create index show] do
+      collection do
+        post '/completion' => 'orders#completion'
+        get '/about' => 'orders#about'
+      end
+    end
+    
   end
-  namespace :admin do
-    get 'orders_items/update'
-  end
-  namespace :admin do
-    get 'items/index'
-    get 'items/new'
-    get 'items/create'
-    get 'items/show'
-    get 'items/update'
-    get 'items/edit'
-  end
-  namespace :admin do
-    get 'customers/index'
-    get 'customers/show'
-    get 'customers/update'
-    get 'customers/edit'
-  end
-  namespace :admin do
-    get 'genres/index'
-    get 'genres/create'
-    get 'genres/show'
-    get 'genres/upadate'
-    get 'genres/edit'
-  end
-  namespace :customer do
-    get 'items/index'
-    get 'items/search'
-    get 'items/show'
-  end
-  namespace :customer do
-    get 'add_deliveries/index'
-    get 'add_deliveries/create'
-    get 'add_deliveries/destroy'
-    get 'add_deliveries/edit'
-    get 'add_deliveries/update'
-  end
-  namespace :customer do
-    get 'into_carts/update'
-    get 'into_carts/index'
-    get 'into_carts/destroy'
-    get 'into_carts/destroy_all'
-    get 'into_carts/create'
-  end
-  namespace :customer do
-    get 'orders/new'
-    get 'orders/show'
-    get 'orders/create'
-    get 'orders/completion'
-    get 'orders/index'
-    get 'orders/about'
-  end
-  namespace :customer do
-    get 'customers/Orders'
-    get 'customers/new'
-    get 'customers/show'
-    get 'customers/create'
-    get 'customers/completion'
-    get 'customers/index'
-    get 'customers/about'
-  end
-  namespace :customer do
-    get 'customers/show'
-    get 'customers/edit'
-    get 'customers/upadate'
-    get 'customers/unsubscribe'
-    get 'customers/withdraw'
-  end
+
+
   get 'homes/top'
   get 'homes/about'
-  devise_for :admins
-  devise_for :customers
+
+
+
+  devise_for :customers, controller: {
+    registrations: 'customers/registrations',
+    sessions: 'customers/sessions',
+    passwords: 'customers/passwords'
+  }
+
+  devise_for :admins, controller: {
+    registrations: 'admin/registrations',
+    sessions: 'admin/sessions',
+    passwords: 'admin/passwords'
+  }
+
+  namespace :admin do
+    resources :items, only: %i[index show new create edit update]
+    resources :customers, only: %i[index show edit update]
+    resources :genres, only: %i[index show create edit update]
+    resources :orders, only: %i[index show update]
+    resources :orders_items, only: [:update]
+  end
+
+
+  #https://qiita.com/hirokihello/items/fa82863ab10a3052d2ff
+  #https://pikawaka.com/rails/destroy_all
+  #https://railsguides.jp/routing.html
+  #https://debug-life.net/entry/103
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
