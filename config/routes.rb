@@ -1,5 +1,18 @@
 Rails.application.routes.draw do
 
+  devise_for :customers, controller: {
+    registrations: 'customers/registrations',
+    sessions: 'customers/sessions',
+    passwords: 'customers/passwords'
+  }
+
+  devise_for :admins, controller: {
+    registrations: 'admin/registrations',
+    sessions: 'admin/sessions',
+    passwords: 'admin/passwords'
+  }
+
+
   scope module: :customer do
     resources :add_deliveries, only: %i[index create destroy edit update] do
     end
@@ -40,18 +53,6 @@ Rails.application.routes.draw do
   get 'homes/about'
 
 
-
-  devise_for :customers, controller: {
-    registrations: 'customers/registrations',
-    sessions: 'customers/sessions',
-    passwords: 'customers/passwords'
-  }
-
-  devise_for :admins, controller: {
-    registrations: 'admin/registrations',
-    sessions: 'admin/sessions',
-    passwords: 'admin/passwords'
-  }
 
   namespace :admin do
     resources :items, only: %i[index show new create edit update]
