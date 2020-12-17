@@ -1,9 +1,19 @@
 Rails.application.routes.draw do
+  devise_for :admins, controllers: {
+    sessions: 'admins/sessions',
+    registrations: 'admins/registrations',
+    passwords: 'admins/passwords'
+  }
 
-  devise_for :users
-  devise_for :installs
+  devise_for :customers, controllers: {
+    registrations: 'customers/registrations',
+    sessions: 'customers/sessions',
+    passwords: 'customers/passwords'
+  }
 
   scope module: :customer do
+    root to: 'homes#top'
+    get 'homes/about'
     resources :add_deliveries, only: %i[index create destroy edit update] do
     end
 
@@ -35,26 +45,12 @@ Rails.application.routes.draw do
         get '/about' => 'orders#about'
       end
     end
-    
+
   end
 
 
-  get 'homes/top'
-  get 'homes/about'
 
 
-
-  devise_for :customers, controller: {
-    registrations: 'customers/registrations',
-    sessions: 'customers/sessions',
-    passwords: 'customers/passwords'
-  }
-
-  devise_for :admins, controller: {
-    registrations: 'admin/registrations',
-    sessions: 'admin/sessions',
-    passwords: 'admin/passwords'
-  }
 
   namespace :admin do
     resources :items, only: %i[index show new create edit update]
@@ -63,6 +59,8 @@ Rails.application.routes.draw do
     resources :orders, only: %i[index show update]
     resources :orders_items, only: [:update]
   end
+
+
 
 
   #https://qiita.com/hirokihello/items/fa82863ab10a3052d2ff
