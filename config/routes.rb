@@ -2,6 +2,7 @@ Rails.application.routes.draw do
 
   devise_for :users
   devise_for :installs
+
   scope module: :customer do
     resources :add_deliveries, only: %i[index create destroy edit update] do
     end
