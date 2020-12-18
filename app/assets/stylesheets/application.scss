@@ -23,7 +23,21 @@
   box-sizing: border-box;
 }
 
+.container-fluid {
+  position: relative;
+}
+
 .navbar-header {
   display: flex;
+}
+
+.navbar-left {
+  align-items: center;
+}
+
+.navbar-right {
+  position: absolute;
+  top: 6px;
+  right: 30px;
   align-items: center;
 }
