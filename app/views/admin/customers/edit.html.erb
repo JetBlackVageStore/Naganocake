@@ -58,9 +58,10 @@
         <div class="col-md-3">
           <%= f.label :"会員ステータス" %>
           <%= f.radio_button :is_active, true %>
-          <%= f.label :is_active, "有効", {value: :false, style: "display: inline-block;"} %>
+          <%= f.label :is_active, "有効", {value: :true, style: "display: inline-block;"} %>
           <%= f.radio_button :is_active, false %>
-          <%= f.label :is_active, "退会済み", {value: :true, style: "display: inline-block;"} %>
+          <%= f.label :is_active, "退会済み", {value: :false, style: "display: inline-block;"} %>
+          <%#= f.select :is_active ,[['有効',true],['退会済み',false]] %>
         </div>
       </div>
 

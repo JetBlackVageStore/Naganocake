@@ -31,7 +31,7 @@ class Admin::CustomersController < ApplicationController
 
    def customers_params
      # permit以下、key取得、update用
-     params.require(:customer).permit(:surname, :firstname, :surname_kana, :firstname_kana,:postal_code,:address,:phone_number,:encrypted_password)
+     params.require(:customer).permit(:surname, :firstname, :surname_kana, :firstname_kana,:postal_code,:address,:phone_number,:is_active)
    end
 
 end

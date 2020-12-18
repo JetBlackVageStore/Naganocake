@@ -48,7 +48,7 @@ ActiveRecord::Schema.define(version: 2020_12_17_000846) do
     t.string "firstname_kana"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.boolean "is_active"
+    t.boolean "is_active", default: false
     t.index ["email"], name: "index_customers_on_email", unique: true
     t.index ["reset_password_token"], name: "index_customers_on_reset_password_token", unique: true
   end

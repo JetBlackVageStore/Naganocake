@@ -8,4 +8,6 @@ class Customer < ApplicationRecord
   has_many :items, dependent: :destroy
   has_many :add_deliveries, dependent: :destroy
 
+  validates :is_active, inclusion: { in: [true, false] }
+
 end
