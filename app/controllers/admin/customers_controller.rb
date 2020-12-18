@@ -27,9 +27,7 @@ class Admin::CustomersController < ApplicationController
 
    private
 
-   def authenticate_user!
-     # code here
-   end
+
 
    def customers_params
      # permit以下、key取得、update用
