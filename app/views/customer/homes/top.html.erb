@@ -1,5 +1,45 @@
-
 <%= render "layouts/header" %>
+<h1>ようこそNaganocake</h1>
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12">
+
+            <p>
+            <span class="welcome">Welcome NaganoCake</span><br>
+              このサイトは、ケーキ販売のECサイトになります。<br>
+              会員でない方も商品の閲覧はできますが、<br>
+              購入には会員登録が必要になります。<br>
+            </p>
+            
+            <h2>オススメ商品</h2>
+
+            <%= link_to "もっと見る", items_path, class: "btn-link  pull-right" %>
+<!--<div class="container">-->
+<!--    <div class="row">-->
+<!--        <div class="col-xs-12">-->
+
+<!--            <p>-->
+<!--            <span class="welcome">Welcome NaganoCake</span><br>-->
+<!--              このサイトは、ケーキ販売のECサイトになります。<br>-->
+<!--              会員でない方も商品の閲覧はできますが、<br>-->
+<!--              購入には会員登録が必要になります。<br>-->
+<!--            </p>-->
+            
+<!--            <h2>オススメ商品</h2>-->
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            <%#= link_to "もっと見る", items_path, class: "btn-link  pull-right" %>
+
+<!--<h1>ようこそNaganocake</h1>-->
+
+
 
 <%= link_to "管理者", new_admin_session_path %>
 <%= link_to "logout", destroy_admin_session_path, method: :delete %>
@@ -22,4 +62,3 @@
 
 <!--<%# if customer_signed_in? %>-->
 <!--<%# end %>-->
-

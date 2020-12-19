@@ -1,2 +1,28 @@
-<h1>Customer::IntoCarts#index</h1>
-<p>Find me in app/views/customer/into_carts/index.html.erb</p>
+<h2>ショッピングカート</h2>
+
+<% if @into_carts.present? %>
+
+<table>
+ <thead>
+  <tr>
+    <th>商品名</th>
+    <th>単価(税込)</th>
+    <th>数量</th>
+    <th>小計</th>
+  </tr>
+ </thead>
+
+ <tbody>
+   <tr>
+    <% @into_carts.each do |into_cart| %>
+     <td>商品名</td>
+     <td>単価（税込）</td>
+     <td>数量</td>
+     <td>小計</td>
+     <td>削除</td>
+   </tr>
+    <% end %>
+ </tbody> 
+ 
+</table>
+<% end %>

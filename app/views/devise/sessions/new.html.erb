@@ -1,0 +1,43 @@
+<div class="row">
+ <div class="col-xs-offset-1 col-xs-11">
+
+ <h2>会員の方はこちらからログイン</h2>
+
+  <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+
+  <div class="field form-group col-xs-9">
+   <%= f.label :"メールアドレス", class: "col-sm-2 control-label" %>
+   <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "col-sm-6 form-control-static" %>
+  </div>
+
+  <div class="field form-group col-xs-9">
+   <%= f.label :"パスワード", class: "col-sm-2 control-label" %>
+   <%= f.password_field :password, autocomplete: "current-password", class: "col-sm-6 form-control-static" %>
+  </div>
+
+  <div class="col-xs-8 pull-right">
+    <%= link_to "=>パスワードを忘れた方はこちら", new_password_path(resource_name), class: "btn-link" %>
+  </div>
+
+  <div class="col-xs-10 pull-right">
+   <%= f.submit "ログイン", class: "btn btn-success btn-lg col-xs-2" %>
+  </div>
+ <% end %>
+
+  <div class="col-xs-7">
+   <h3 class="text-center">登録がお済みではない方</h3>
+   <p class="text-center">
+    <%= link_to "こちら", new_customer_registration_path, class: "btn-link" %>から新規登録を行ってください。
+   </p>
+  </div>
+ </div>
+</div>
+
+
+  <!-- ↓↓　deviseの元の機能　-->
+  <!--<%# if devise_mapping.rememberable? %>-->
+  <!--  <div class="field">-->
+  <!--    <%#= f.check_box :remember_me %>-->
+  <!--    <%#= f.label :remember_me %>-->
+  <!--  </div>-->
+  <!--<%# end %>-->

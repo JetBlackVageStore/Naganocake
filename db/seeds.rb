@@ -12,7 +12,7 @@
   Customer.create!(
     email: "test#{i+1}@test",
     password: "password#{i+1}",
-    postal_code: "0123456#{i+1}",
+    postal_code: "0123456",
     address: "address#{i+1}",
     phone_number: "00000#{i+1}",
     surname: "testName#{i+1}",
