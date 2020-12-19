@@ -45,12 +45,21 @@ Rails.application.routes.draw do
         get '/about' => 'orders#about'
       end
     end
+<<<<<<< HEAD
 
   end
 
 
 
 
+=======
+
+  end
+
+
+
+
+>>>>>>> 787a080c85abb1ad7a37719f789ef93ef61abe76
 
   namespace :admin do
     resources :items, only: %i[index show new create edit update]

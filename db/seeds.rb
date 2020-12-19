@@ -8,6 +8,7 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+<<<<<<< HEAD
 20.times do |i|
   Customer.create!(
     email: "test#{i+1}@test",
@@ -34,3 +35,9 @@
 
   )
 end
+=======
+Admin.create!(
+  email: 'test@test',
+  password: 'testtest',
+)
+>>>>>>> 787a080c85abb1ad7a37719f789ef93ef61abe76
