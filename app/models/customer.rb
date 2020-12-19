@@ -21,4 +21,8 @@ class Customer < ApplicationRecord
   #カナ氏名はカタカナ意外不可
   validates :surname_kana, :firstname_kana, 
     format: { with: /\A[\p{katakana}\p{blank}ー－]+\z/, message: 'はカタカナで入力して下さい。'}
+
+  #パスワードvaridate＋再確認
+  #validates :password, confirmation: true
+  #validates :password_confirmation, presence: true
 end

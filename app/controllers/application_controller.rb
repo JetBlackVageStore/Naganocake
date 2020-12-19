@@ -14,5 +14,4 @@ class ApplicationController < ActionController::Base
         render "/customers/sign_up"
       end
   end
-
 end

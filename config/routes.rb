@@ -12,6 +12,7 @@ Rails.application.routes.draw do
     passwords: 'admin/passwords'
   }
 
+
   scope module: :customer do
     root to: 'homes#top'
     get 'homes/about'
@@ -48,7 +49,6 @@ Rails.application.routes.draw do
     end
     
   end
-
 
   namespace :admin do
     resources :items, only: %i[index show new create edit update]
