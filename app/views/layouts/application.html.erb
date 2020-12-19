@@ -10,6 +10,9 @@
   </head>
 
   <body>
+    <%= link_to "サインアップ", new_customer_registration_path %>
+    <%= link_to "ログイン", customer_session_path %>
+    <%= link_to "ログアウト", destroy_customer_session_path, method: :delete %>
     <%= yield %>
   </body>
 </html>
