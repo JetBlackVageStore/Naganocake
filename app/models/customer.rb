@@ -23,8 +23,8 @@ class Customer < ApplicationRecord
   validates :surname_kana, :firstname_kana,
     format: { with: /\A[\p{katakana}\p{blank}ー－]+\z/, message: 'はカタカナで入力して下さい。'}
 
-  #パスワードvaridate＋再確認
-  validates :password, confirmation: true
-  validates :password_confirmation, presence: true
+  #パスワードvaridate＋再確認⇨これをつけるとmypageでupdateできなくなる⇨なぜ？
+  # validates :password, confirmation: true
+  # validates :password_confirmation, presence: true
 
 end

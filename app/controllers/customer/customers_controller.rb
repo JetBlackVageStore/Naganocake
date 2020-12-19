@@ -1,4 +1,6 @@
 class Customer::CustomersController < ApplicationController
+  before_action :authenticate_customer!, only: [:edit, :update]
+  
   def show
     @customer = current_customer
   end
@@ -11,9 +13,9 @@ class Customer::CustomersController < ApplicationController
     @customer = current_customer
 		if @customer.update(customer_params)
 		  flash[:success] = "登録情報を変更しました"
-		  redirect_to customers_path
+		  redirect_to my_page_customers_path
 		else
-		  render :edit and return
+		  render :edit
 		end
   end
 
@@ -25,7 +27,7 @@ class Customer::CustomersController < ApplicationController
   
   private
     def customer_params
-      params.require(:customer).permit(:surname, :firstname, :surname_kana, :firstname_kana, :email, :postal_code, :address, :phone_number)
+      params.require(:customer).permit(:surname, :firstname, :surname_kana, :firstname_kana, :postal_code, :email, :address, :phone_number )
     end
 
 end
