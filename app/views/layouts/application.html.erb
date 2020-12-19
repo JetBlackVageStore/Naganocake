@@ -11,9 +11,21 @@
 
 
   <body>
+<<<<<<< HEAD
     <%= link_to "ログアウト", destroy_customer_session_path, method: :delete %>
     <%= link_to "ログイン", new_customer_session_path %>
     <%= link_to "新規会員登録", new_customer_registration_path %>
+=======
+<<<<<<< HEAD
+    <%= link_to "サインアップ", new_customer_registration_path %>
+    <%= link_to "ログイン", customer_session_path %>
+    <%= link_to "ログアウト", destroy_customer_session_path, method: :delete %>
+=======
+    <%= link_to "ログアウト", destroy_customer_session_path, method: :delete %>
+    <%= link_to "ログイン", new_customer_session_path %>
+    <%= link_to "新規会員登録", new_customer_registration_path %>
+>>>>>>> a6e9b0d19d3b63e04cb287b71e1e147e8f197301
+>>>>>>> 10ee55873ca8aecb4d8cb5c9b255283aa946a3be
     <%= yield %>
   </body>
 </html>

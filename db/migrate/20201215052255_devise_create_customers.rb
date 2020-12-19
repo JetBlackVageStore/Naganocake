@@ -36,13 +36,24 @@ class DeviseCreateCustomers < ActiveRecord::Migration[5.2]
       # t.integer  :failed_attempts, default: 0, null: false # Only if lock strategy is :failed_attempts
       # t.string   :unlock_token # Only if unlock strategy is :email or :both
       # t.datetime :locked_at
+<<<<<<< HEAD
       t.string :postal_code
       t.string :address
       t.string :phone_number
+=======
+
+<<<<<<< HEAD
+=======
+      t.string :postal_code
+      t.string :address
+      t.string :phone_number
+>>>>>>> c1493b1720828b5e4ad87dcf638f565e1548a821
+>>>>>>> 10ee55873ca8aecb4d8cb5c9b255283aa946a3be
       t.string :surname
       t.string :firstname
       t.string :surname_kana
       t.string :firstname_kana
+<<<<<<< HEAD
 
       t.string :postal_code
       t.string :address
@@ -51,6 +62,14 @@ class DeviseCreateCustomers < ActiveRecord::Migration[5.2]
       t.string :firstname
       t.string :surname_kana
       t.string :firstname_kana
+=======
+<<<<<<< HEAD
+      t.string :postal_code
+      t.string :address
+      t.string :phone_number
+=======
+>>>>>>> c1493b1720828b5e4ad87dcf638f565e1548a821
+>>>>>>> 10ee55873ca8aecb4d8cb5c9b255283aa946a3be
 
       t.timestamps null: false
     end
