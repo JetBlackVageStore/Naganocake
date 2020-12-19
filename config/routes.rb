@@ -14,6 +14,8 @@ Rails.application.routes.draw do
 
 
   scope module: :customer do
+    root to: 'homes#top'
+    get 'homes/about'
     resources :add_deliveries, only: %i[index create destroy edit update] do
     end
 
@@ -49,8 +51,7 @@ Rails.application.routes.draw do
   end
 
 
-  get 'homes/top'
-  get 'homes/about'
+
 
 
 
