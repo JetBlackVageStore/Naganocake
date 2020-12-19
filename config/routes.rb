@@ -1,45 +1,16 @@
 Rails.application.routes.draw do
-<<<<<<< HEAD
-=======
-<<<<<<< HEAD
-  
-  devise_for :customers, controller: {
-=======
->>>>>>> 10ee55873ca8aecb4d8cb5c9b255283aa946a3be
-  devise_for :admins, controllers: {
-    sessions: 'admins/sessions',
-    registrations: 'admins/registrations',
-    passwords: 'admins/passwords'
-  }
-
-  devise_for :customers, controllers: {
->>>>>>> c1493b1720828b5e4ad87dcf638f565e1548a821
-    registrations: 'customers/registrations',
-    sessions: 'customers/sessions',
-    passwords: 'customers/passwords'
-  }
-<<<<<<< HEAD
 
   devise_for :customers, controller: {
     registrations: 'customers/registrations',
     sessions: 'customers/sessions',
     passwords: 'customers/passwords'
   }
-=======
-<<<<<<< HEAD
->>>>>>> 10ee55873ca8aecb4d8cb5c9b255283aa946a3be
 
   devise_for :admins, controller: {
     registrations: 'admin/registrations',
     sessions: 'admin/sessions',
     passwords: 'admin/passwords'
   }
-
-<<<<<<< HEAD
-=======
-=======
->>>>>>> c1493b1720828b5e4ad87dcf638f565e1548a821
->>>>>>> 10ee55873ca8aecb4d8cb5c9b255283aa946a3be
 
   scope module: :customer do
     root to: 'homes#top'
@@ -76,25 +47,10 @@ Rails.application.routes.draw do
         get '/about' => 'orders#about'
       end
     end
-<<<<<<< HEAD
-<<<<<<< HEAD
 
   end
 
 
-
-=======
-
-
->>>>>>> c1493b1720828b5e4ad87dcf638f565e1548a821
-=======
-    
-  end
-=======
-
->>>>>>> c1493b1720828b5e4ad87dcf638f565e1548a821
-
->>>>>>> 10ee55873ca8aecb4d8cb5c9b255283aa946a3be
   namespace :admin do
     resources :items, only: %i[index show new create edit update]
     resources :customers, only: %i[index show edit update]
@@ -111,4 +67,3 @@ Rails.application.routes.draw do
   #https://railsguides.jp/routing.html
   #https://debug-life.net/entry/103
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-end
