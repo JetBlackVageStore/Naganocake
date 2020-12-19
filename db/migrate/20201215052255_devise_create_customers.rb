@@ -4,8 +4,13 @@ class DeviseCreateCustomers < ActiveRecord::Migration[5.2]
   def change
     create_table :customers do |t|
       ## Database authenticatable
+<<<<<<< HEAD
       t.string :email,              null: false, default: ""
       t.string :encrypted_password, null: false, default: ""
+=======
+      t.string :email, null: false, default: ''
+      t.string :encrypted_password, null: false, default: ''
+>>>>>>> c1493b1720828b5e4ad87dcf638f565e1548a821
 
       ## Recoverable
       t.string   :reset_password_token
@@ -39,6 +44,13 @@ class DeviseCreateCustomers < ActiveRecord::Migration[5.2]
       t.string :surname_kana
       t.string :firstname_kana
 
+      t.string :postal_code
+      t.string :address
+      t.string :phone_number
+      t.string :surname
+      t.string :firstname
+      t.string :surname_kana
+      t.string :firstname_kana
 
       t.timestamps null: false
     end
