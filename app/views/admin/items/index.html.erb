@@ -23,16 +23,16 @@
               <%= item.id %>
             </td>
             <td>
-              <%= link_to product.name, admin_item_path(product) %>
+              <%= link_to item.name, admin_item_path(item) %>
             </td>
             <td>
-              <%= product.price_without %>
+              <%= item.price_without %>
             </td>
             <td>
-              <%= product.genre.name %>
+              <%= item.genre %>
             </td>
             <td>
-              <% if product.item_status == true %>
+              <% if item.item_status == true %>
                 <%= "販売中" %>
               <% else %>
                 <%= "販売中止" %>

@@ -4,7 +4,7 @@
 
 <div classs="row">
   <div class="col-md-2 col-md-offset-1">
-    <%= attachment_image_tag(@item, :image_id, size: '170x130' ) %>
+    <%#= attachment_image_tag(@item, :image_id, size: '170x130' ) %>
   </div>
 
   <div class="col-md-7 col-md-offset-1">
@@ -19,7 +19,7 @@
       </tr>
       <tr class="row">
         <th class="col-md-4">ジャンル</th>
-        <td class="col-md-8"><%= @genre.name %></td>
+        <td class="col-md-8"><%= @genre.genre_name %></td>
       </tr>
       <tr class="row">
         <th class="col-md-4">税込価格(税抜価格)</th>

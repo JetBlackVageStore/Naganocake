@@ -8,7 +8,6 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-<<<<<<< HEAD
 20.times do |i|
   Customer.create!(
     email: "test#{i+1}@test",
@@ -28,16 +27,17 @@
     specifcation: "setumei#{i+1}",
     price_without: "#{i+1}",
     genre_id: "#{i+1}",
-    item_status: true,
+    item_status: true
   )
 
-  Genre.create!(
-
-  )
 end
-=======
+
 Admin.create!(
   email: 'test@test',
-  password: 'testtest',
+  password: 'testtest'
 )
->>>>>>> 787a080c85abb1ad7a37719f789ef93ef61abe76
+
+Genre.create!(
+  genre_name: "test",
+  genre_status: true
+)
