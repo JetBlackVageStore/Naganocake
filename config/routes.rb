@@ -52,7 +52,6 @@ Rails.application.routes.draw do
   end
 
   namespace :admin do
-    get "" => "homes#top"
     resources :items, only: %i[index show new create edit update]
     resources :customers, only: %i[index show edit update]
     resources :genres, only: %i[index show create edit update]
