@@ -3,6 +3,7 @@ class Customer < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
+<<<<<<< HEAD
          
   has_many :add_deliveries, dependent: :destroy
   has_many :orders
@@ -25,4 +26,13 @@ class Customer < ApplicationRecord
   #パスワードvaridate＋再確認
   #validates :password, confirmation: true
   #validates :password_confirmation, presence: true
+=======
+
+  has_many :into_carts, dependent: :destroy
+  has_many :items, dependent: :destroy
+  has_many :add_deliveries, dependent: :destroy
+
+  validates :is_active, inclusion: { in: [true, false] }
+
+>>>>>>> c1493b1720828b5e4ad87dcf638f565e1548a821
 end
