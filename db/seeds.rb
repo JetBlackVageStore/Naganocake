@@ -21,4 +21,16 @@
     firstname_kana: "testFirst_kana#{i+1}",
     is_active: true,
     )
+
+  Item.create!(
+    name: "name#{i+1}",
+    specifcation: "setumei#{i+1}",
+    price_without: "#{i+1}",
+    genre_id: "#{i+1}",
+    item_status: true,
+  )
+
+  Genre.create!(
+
+  )
 end
