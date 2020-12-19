@@ -1,5 +1,6 @@
 <h2>新規会員登録</h2>
 
+<<<<<<< HEAD
 <%= form_for(resource, as: resource_name, url: customer_registration_path(resource_name)) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
 
@@ -23,6 +24,26 @@
 
     
 　  <%= f.label :"郵便番号" %>
+=======
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+  <%= render "devise/shared/error_messages", resource: resource %>
+    <%= f.label :"名前" %>
+    <%= f.label :"(姓)" %>
+    <%= f.text_field :surname %>
+    <%= f.label :"(名)" %>
+    <%= f.text_field :firstname, autofocus: true, autocomplete: "firstname" %>
+
+    <%= f.label :"フリガナ" %>
+    <%= f.label :"(セイ)" %>
+    <%= f.text_field :surname_kana %>
+    <%= f.label :"(メイ)" %>
+    <%= f.text_field :firstname_kana, autofocus: true, autocomplete: "firstname_kana" %>
+
+    <%= f.label :"メールアドレス" %>
+    <%= f.text_field :email %>
+
+    <%= f.label :"郵便番号" %>
+>>>>>>> 28d64d374a8ed8a56cc52fd1450b8cc7abb64c3b
     <%= f.text_field :postal_code %>
 
     <%= f.label :"住所" %>
@@ -30,7 +51,11 @@
 
     <%= f.label :"電話番号" %>
     <%= f.text_field :phone_number %>
+<<<<<<< HEAD
     
+=======
+
+>>>>>>> 28d64d374a8ed8a56cc52fd1450b8cc7abb64c3b
     <%= f.label :"パスワード(6文字以上)" %>
     <%= f.password_field :password, autocomplete: "new-password" %>
 
@@ -38,6 +63,7 @@
     <%= f.password_field :password, autocomplete: "new-password" %>
 
     <%= f.submit "新規登録" %>
+<<<<<<< HEAD
   <% end %>
   
   
@@ -60,5 +86,8 @@
   <!--  <= f.submit "Sign up" %>-->
   <!--</div>-->
 
+=======
+<% end %>
+>>>>>>> 28d64d374a8ed8a56cc52fd1450b8cc7abb64c3b
 
 <%= render "devise/shared/links" %>

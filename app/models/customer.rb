@@ -26,4 +26,5 @@ class Customer < ApplicationRecord
   #パスワードvaridate＋再確認
   validates :password, confirmation: true
   validates :password_confirmation, presence: true
+
 end

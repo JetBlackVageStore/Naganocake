@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-
+  
   devise_for :customers, controller: {
     registrations: 'customers/registrations',
     sessions: 'customers/sessions',
@@ -49,9 +49,6 @@ Rails.application.routes.draw do
     end
     
   end
-
-
-
 
 
 

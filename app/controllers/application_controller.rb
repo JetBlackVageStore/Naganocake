@@ -9,8 +9,12 @@ class ApplicationController < ActionController::Base
 
   # ログイン時に遷移変更
   def after_sign_in_path_for(resource)
-    # if customer_signed_in?
-      root_path
+      if current_customer
+        flash[:notice] = "ログインに成功しました"
+        items_path
+      else
+        render "/customers/sign_up"
+      end
   end
 
   #ログアウト時に遷移変更
