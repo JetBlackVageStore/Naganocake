@@ -5,6 +5,7 @@ class Admin::OrdersItemsController < ApplicationController
     order_products = order.order_items
     order_item.update(order_item_params)
 
+
     if order_item.prod_status == "製作中"
       order.update(status: "製作中")
     elsif order_products.all?{|op| op.prod_status == "製作完了"}
