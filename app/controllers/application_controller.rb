@@ -1,6 +1,29 @@
 class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
-
+  
+  def after_sign_in_path_for(resource)
+   case resource
+   when Admin
+   　 admin_orders_path
+   when Customer
+     root
+   end
+  end 
+  
+  protect_from_forgery with: :exception
+  
+  helper_method :current_cart
+  
+  def current_cart
+    if session[:into_cart_id]
+      @cart = IntoCart.find(session[:into_cart_id])
+    else
+      @cart = IntoCart.create
+      session[:into_cart_id] = @cart.id
+    end 
+  end 
+  
+  
   #ログイン時に下記のカラム入力を許可
   protected
   def configure_permitted_parameters

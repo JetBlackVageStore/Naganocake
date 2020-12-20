@@ -1,7 +1,9 @@
 <h2>ショッピングカート</h2>
 
 <% if @into_carts.present? %>
-
+ <div>
+  <%= link_to " カートを空にする", delete_all_into_carts_path, method: :delete, data: {confirm: 'カートを空にして本当によろしいですか？'}, class: "btn btn-danger" %>
+ </div>
 <table>
  <thead>
   <tr>
