@@ -1,12 +1,16 @@
 class Admin::ItemsController < ApplicationController
-  before_action :authenticate_admin!
-
+   before_action :authenticate_admin!
+  def new
+    @item = Item.new
+  end
   def index
     @items = Item.all.page(params[:page]).per(10)
   end
 
-  def new
-    @item = Item.new
+
+  def show
+    @item = Item.find(params[:id])
+    @genre = Genre.find_by(id: @item.genre_id)
   end
 
   def create
@@ -18,10 +22,6 @@ class Admin::ItemsController < ApplicationController
     end
   end
 
-  def show
-    @item = Item.find(params[:id])
-    @genre = Genre.find_by(id: @item.genre_id)
-  end
 
   def edit
     @item = Item.find(params[:id])
@@ -39,6 +39,6 @@ class Admin::ItemsController < ApplicationController
   private
 
   def items_params
-    params.require(:item).permit(:genre_name, :genre_id, :name, :specifcation, :price_without, :image_id, :item_status)
+    params.require(:item).permit( :genre_id, :name, :specifcation, :price_without, :image_id, :item_status)
   end
 end

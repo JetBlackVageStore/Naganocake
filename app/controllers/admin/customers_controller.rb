@@ -1,5 +1,5 @@
 class Admin::CustomersController < ApplicationController
-   # before_action :authenticate_user!
+    before_action :authenticate_user!
   # ログイン済のユーザのみアクセスの許可をする
   
   # アクションが足りていない気がする

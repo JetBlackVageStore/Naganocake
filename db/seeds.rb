@@ -21,7 +21,11 @@
 #     firstname_kana: "testFirst_kana#{i + 1}",
 #     is_active: true
 #   )
+<<<<<<< HEAD
 
+=======
+#
+>>>>>>> 90c757d81b98fd083dfeaba8f0a301db7fbce9f1
 #   Item.create!(
 #     name: "name#{i + 1}",
 #     specifcation: "setumei#{i + 1}",
@@ -36,7 +40,16 @@ Admin.create!(
   password: 'testtest'
 )
 
+<<<<<<< HEAD
 # Genre.create!(
 #   genre_name: 'test',
 #   genre_status: true
 # )
+=======
+
+# Genre.create!(
+#   id: '1',
+#   genre_name: 'ケーキ',
+#   genre_status: 'TRUE'
+# )
+>>>>>>> 90c757d81b98fd083dfeaba8f0a301db7fbce9f1

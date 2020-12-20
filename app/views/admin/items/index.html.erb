@@ -3,7 +3,7 @@
     <h4>商品一覧</h4>
     <%= link_to "＋", new_admin_item_path, class: "pull-right new_product_btn" %>
     <div class="product_list">
-      <%= render "admin/items/item_list", products: @item %>
+      <%= render "admin/items/item_list", items: @items %>
 
     </div>
   </div>
