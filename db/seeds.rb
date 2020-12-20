@@ -10,26 +10,25 @@
 
 20.times do |i|
   Customer.create!(
-    email: "test#{i+1}@test",
-    password: "password#{i+1}",
-    postal_code: "0123456",
-    address: "address#{i+1}",
-    phone_number: "00000#{i+1}",
-    surname: "testName#{i+1}",
-    firstname: "testFirst#{i+1}",
-    surname_kana: "testName_kana#{i+1}",
-    firstname_kana: "testFirst_kana#{i+1}",
-    is_active: true,
-    )
-
-  Item.create!(
-    name: "name#{i+1}",
-    specifcation: "setumei#{i+1}",
-    price_without: "#{i+1}",
-    genre_id: "#{i+1}",
-    item_status: true
+    email: "test#{i + 1}@test",
+    password: "password#{i + 1}",
+    postal_code: '0123456',
+    address: "address#{i + 1}",
+    phone_number: "00000#{i + 1}",
+    surname: "testName#{i + 1}",
+    firstname: "testFirst#{i + 1}",
+    surname_kana: "testName_kana#{i + 1}",
+    firstname_kana: "testFirst_kana#{i + 1}",
+    is_active: true
   )
 
+  Item.create!(
+    name: "name#{i + 1}",
+    specifcation: "setumei#{i + 1}",
+    price_without: (i + 1).to_s,
+    genre_id: (i + 1).to_s,
+    item_status: true
+  )
 end
 
 Admin.create!(
@@ -38,6 +37,6 @@ Admin.create!(
 )
 
 Genre.create!(
-  genre_name: "test",
+  genre_name: 'test',
   genre_status: true
 )

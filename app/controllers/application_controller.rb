@@ -7,12 +7,13 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.permit(:sign_up, keys: [:surname, :firstname, :surname_kana, :firstname_kana, :postal_code, :address, :phone_number])
   end
 
+  #admiｎとcustomerで分ける
   def after_sign_in_path_for(resource)
-    if current_customer
-      flash[:notice] = "ログインに成功しました"
-      items_path
-    else
-      render "/customers/sign_up"
+    case resource
+    when Admin
+      admin_orders_path
+    when Customer
+      root
     end
   end
 
