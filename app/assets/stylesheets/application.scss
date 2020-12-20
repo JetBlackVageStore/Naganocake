@@ -13,6 +13,31 @@
  *= require_tree .
  *= require_self
  */
- 
+
 @import "bootstrap-sprockets";
 @import "bootstrap";
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.container-fluid {
+  position: relative;
+}
+
+.navbar-header {
+  display: flex;
+}
+
+.navbar-left {
+  align-items: center;
+}
+
+.navbar-right {
+  position: absolute;
+  top: 6px;
+  right: 30px;
+  align-items: center;
+}

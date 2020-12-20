@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_15_054259) do
+ActiveRecord::Schema.define(version: 2020_12_17_000846) do
 
   create_table "add_deliveries", force: :cascade do |t|
     t.integer "customer_id"
@@ -39,22 +39,23 @@ ActiveRecord::Schema.define(version: 2020_12_15_054259) do
     t.string "reset_password_token"
     t.datetime "reset_password_sent_atr"
     t.datetime "remember_created_at"
-    t.string "postal_code"
-    t.string "address"
-    t.string "phone_number"
     t.string "surname"
     t.string "firstname"
     t.string "surname_kana"
     t.string "firstname_kana"
+    t.string "postal_code"
+    t.string "address"
+    t.string "phone_number"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "is_active", default: false
     t.index ["email"], name: "index_customers_on_email", unique: true
     t.index ["reset_password_token"], name: "index_customers_on_reset_password_token", unique: true
   end
 
   create_table "genres", force: :cascade do |t|
     t.string "genre_name"
-    t.boolean "genre_status"
+    t.boolean "genre_status", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

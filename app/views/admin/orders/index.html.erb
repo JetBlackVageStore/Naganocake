@@ -1,2 +1,41 @@
-<h1>Admin::Orders#index</h1>
-<p>Find me in app/views/admin/orders/index.html.erb</p>
+
+<div class="container">
+  <h3>注文履歴一覧</h3>
+  <div class="row">
+    <div class="col-xs-6 col-xs-offset-3">
+      <table class="table table-hover table-inverse">
+        <thead>
+          <tr>
+            <th>購入日時</th>
+            <th>購入者</th>
+            <th>注文個数</th>
+            <th>注文ステータス</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <% @orders.each do |order| %>
+          <tr>
+            <td>
+              <%= order.created_at %>
+            </td>
+            <td>
+              <%= order.customers.surname %>
+              <%= order.customers.firstname %>
+            </td>
+            <td>
+              <%= order.items.count %>
+            </td>
+            <td>
+              <%= order.order_status %>
+            </td>
+          </tr>
+          <% end %>
+          <%= paginate @orders %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+
