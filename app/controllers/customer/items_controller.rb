@@ -8,15 +8,14 @@ class Customer::ItemsController < ApplicationController
 
   def search
     @value = params["search"]["value"]
-    # @how = params["search"]["how"]
     @datas = search_for(@value)
-    #def search_forを実行(引数に検索ワードと検索方法)
+    # @how = params["search"]["how"]
     # @genres = Genre.where(genre_status: true)
     # @genre = Genre.find(params[:genre_id])
   end
 
   def show
-    @items = Item.where(item_status: true).page(params[:page]).per(8).revers_order
+    @items = Item.where(item_status: true).page(params[:page]).per(8)
     @item = Item.find(params[:id])
     @into_cart = IntoCart.new
   end
