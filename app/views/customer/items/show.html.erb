@@ -4,7 +4,7 @@
 <%= @item.specifcation %>
 <h3>
   ¥<%= @item.price_without.to_s(:delimited) %>
- <span>(税込)</span>  
+ <span>(税込)</span>
 </h3>
 <div>
  <% if @item.item_status && @item.genre.genre_status == true %>
@@ -14,6 +14,6 @@
   <% end %>
  <% else %>
   <h4 class="badge badge-pill badge-warning">売り切れ中</h4>
- <% end %> 
+ <% end %>
  <%= paginate @items %>
 </div>
