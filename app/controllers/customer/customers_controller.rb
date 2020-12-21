@@ -17,7 +17,6 @@ class Customer::CustomersController < ApplicationController
   		  flash[:success] = "登録情報を変更しました"
   		  redirect_to my_page_customers_path
   		else
-  		  render :edit
   		  render "edit"
   		end
   end
@@ -26,6 +25,10 @@ class Customer::CustomersController < ApplicationController
   end
 
   def withdraw
+    @customer = current_customer
+    reset_session
+    flash[:notice] = "ありがとうございました。またのご利用をお待ちしております。"
+    redirect_to root_path
   end
   
   private

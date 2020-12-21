@@ -44,8 +44,10 @@ Rails.application.routes.draw do
 
     resources :orders, only: %i[new create index show] do
       collection do
-        post '/completion' => 'orders#completion'
-        get '/about' => 'orders#about'
+        post '/about' => 'orders#about'
+        get '/completion' => 'orders#completion'
+        #get '/about' => 'orders#about'
+        
       end
     end
 

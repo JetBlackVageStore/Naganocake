@@ -6,4 +6,4 @@
   </div>
   
   <%= link_to "退会しない", customers_path %>
-  <%= link_to "退会する", withdraw_customers_path %>
+  <%= link_to "退会する", withdraw_customers_path, method: :patch, data: {confirm: "本当に退会してもよろしいですか？"}, class: "glyphicon glyphicon-tint btn btn-danger" %>

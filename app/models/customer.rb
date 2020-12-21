@@ -5,7 +5,7 @@ class Customer < ApplicationRecord
          :recoverable, :rememberable, :validatable
   has_many :orders
   has_many :into_carts, dependent: :destroy
-  has_many :add_deliverys, dependent: :destroy
+  has_many :add_deliveries, dependent: :destroy
   has_many :into_items, dependent: :destroy
 
 
@@ -20,8 +20,14 @@ class Customer < ApplicationRecord
   validates :phone_number, numericality: { only_integer: true }
 
   #カナ氏名はカタカナ意外不可
-  # validates :surname_kana, :firstname_kana,
-  #   format: { with: /\A[\p{katakana}\p{blank}ー－]+\z/, message: 'はカタカナで入力して下さい。'}
+   validates :surname_kana, :firstname_kana,
+    format: { with: /\A[\p{katakana}\p{blank}ー－]+\z/, message: 'はカタカナで入力して下さい。'}
+     
+ enum user_status: { '有効': true, '退会済': false }
+
+#def active_for_authentication?
+  #super && self.user_status == '有効'
+#end
 
   #パスワードvaridate＋再確認⇨これをつけるとmypageでupdateできなくなる⇨なぜ？
   # validates :password, confirmation: true
@@ -31,7 +37,4 @@ class Customer < ApplicationRecord
   # has_many :orders
   # has_many :into_items, dependent: :destroy
 
-  validates :surname, :firstname, :surname_kana, :firstname_kana,
-            :address, :phone_number,
-            presence: true
 end

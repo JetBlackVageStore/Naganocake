@@ -1,7 +1,7 @@
 <div calss="row">
   <div class="col-xs-12">
     <h2 class="head-line title_h2 text-center">注文履歴一覧</h2>
-      <% if @orders.present? %>
+
         <table class="table table-hover table-bordered table-condensed">
           <thead>
             <tr class="info">
@@ -26,7 +26,7 @@
     		        </td>
     		        <td>
     		          <% order.order_items.each do |order_item| %>
-    		          	<%= order_item.product.name %><br>
+    		          	<%= order_item.item.name %><br>
     		          <% end %>
     		        </td>
     		        <td class="text-right">
@@ -36,14 +36,13 @@
     		          <%= order.order_status %>
     		        </td>
          	      <td>
-       	          <%= link_to "注文詳細", customers_order_path(order), class: "glyphicon glyphicon-zoom-in btn btn-success" %>
+       	          <%= link_to "表示", order_path(order), class: "glyphicon glyphicon-zoom-in btn btn-success" %>
        	        </td>
               </tr>
             <% end %>
           </tbody>
         </table>
-      <% else %>
-        <p>注文履歴がありません。</p>
-      <% end %>
+
+
     </div>
 </div>
