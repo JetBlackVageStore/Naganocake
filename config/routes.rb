@@ -48,7 +48,6 @@ Rails.application.routes.draw do
         get '/completion' => 'orders#completion'
       end
     end
-
   end
   namespace :admin do
     resources :items, only: %i[index show new create edit update]

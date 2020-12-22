@@ -19,15 +19,21 @@ class ApplicationController < ActionController::Base
       else
         render "/customers/sign_up"
       end
+    if current_customer
+      flash[:notice] = "ログインに成功しました"
+      items_path
+    else
+      render "/customers/sign_up"
+    end
   end
 
   def after_sign_in_path_for(resource)
-   case resource
-   when Admin
-   　 admin_orders_path
-   when Customer
-     root
-   end
+    case resource
+    when Admin
+        admin_orders_path
+    when Customer
+      root
+    end
   end
 
   protect_from_forgery with: :exception

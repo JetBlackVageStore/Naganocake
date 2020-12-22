@@ -7,19 +7,19 @@ class Customer < ApplicationRecord
   has_many :add_deliveries, dependent: :destroy
   has_many :orders
   has_many :into_items, dependent: :destroy
-  
+
   validates :surname, :firstname, :surname_kana, :firstname_kana,
             :address, :phone_number,
             presence: true
-            
+
   # 郵便番号は数字のみ許可。ハイフンやカッコは認めない
   validates :postal_code, length:{is: 7}, numericality: { only_integer: true }
-  
+
   # 電話番号は数字のみ許可。ハイフンやカッコは認めない
   validates :phone_number, numericality: { only_integer: true }
-  
+
   #カナ氏名はカタカナ意外不可
-  validates :surname_kana, :firstname_kana, 
+  validates :surname_kana, :firstname_kana,
     format: { with: /\A[\p{katakana}\p{blank}ー－]+\z/, message: 'はカタカナで入力して下さい。'}
 
   #パスワードvaridate＋再確認
