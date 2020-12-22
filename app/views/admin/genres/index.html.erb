@@ -1,8 +1,9 @@
-
 <div class="container">
   <div class="row">
-    <div class="col-md-6">
-      <h3><mark>ジャンル一覧・追加</mark></h3>
+    <h3 class="header-background col-xs-3 col-xs-offset-1">ジャンル一覧・追加</h3>
+  </div>
+  <div class="row">
+    <div class="col-xs-6">
       <%= form_with model: @genre, url: admin_genres_path, local: true do |f| %>
         <div>
           <%= f.label :ジャンル %>
@@ -14,7 +15,11 @@
           <%= f.submit '追加', class: 'btn btn-info' %>
         </div>
       <% end %>
+    </div>
+  </div>
 
+  <div class="row">
+    <div class="col-xs-6">
       <table class="table table-hover table-inverse">
         <thead>
         <tr>
@@ -35,7 +40,9 @@
                 <%= '無効' %>
               <% end %>
             </td>
-            <td><%= link_to '編集する', edit_admin_genre_path(genre), class: 'btn btn-primary' %></td>
+            <td class="edit-btn">
+              <%= link_to '編集する', edit_admin_genre_path(genre), class: 'btn btn-primary' %>
+            </td>
           </tr>
         <% end %>
         </tbody>

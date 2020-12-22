@@ -10,16 +10,14 @@
           <td class="text-left"><%= @order.created_at.strftime('%Y/%m/%d') %></td>
         </tr>
         <tr>
-          　
-          <th class="info">配送先</th>
+          　<th class="info">配送先</th>
           <td class="text-left"><%= @order.postal_code %><br>
             <%= @order.address %><br>
             <%= @order.addressee %>
           </td>
         </tr>
         <tr>
-          　
-          <th class="info">支払方法</th>
+          　<th class="info">支払方法</th>
           <td class="text-left"><%= @order.payjp_id %></td>
         </tr>
         <tr>

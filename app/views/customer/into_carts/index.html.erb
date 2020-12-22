@@ -1,7 +1,14 @@
+ <div class="row">
+  <div class="col-lg-8">
+
+
+
 <h2>ショッピングカート</h2>
 
-<% if @into_carts.present? %>
-
+<% if @cart_items.present? %>
+ <div>
+  <%= link_to " カートを空にする", delete_all_into_carts_path, method: :delete, data: {confirm: 'カートを空にしますか？'}, class: "btn btn-danger" %>
+ </div>
 <table>
  <thead>
   <tr>
@@ -12,17 +19,71 @@
   </tr>
  </thead>
 
+<!--    <tbody>-->
+<!--      <tr>-->
+        <%# @into_carts.each do |into_cart| %>
+<!--       <td>商品名</td>-->
+<!--       <td>単価（税込）</td>-->
+<!--       <td>数量</td>-->
+<!--       <td>小計</td>-->
+<!--       <td>削除</td>-->
+<!--      </tr>-->
+      <%# end %>
+<!--    </tbody>-->
+
+  </table>
+  <% end %>
+</div>
  <tbody>
    <tr>
-    <% @into_carts.each do |into_cart| %>
-     <td>商品名</td>
-     <td>単価（税込）</td>
-     <td>数量</td>
-     <td>小計</td>
-     <td>削除</td>
+    <% @cart_items.each do |into_cart| %>
+     <td>
+      <%= attachment_image_tag(into_cart.item, :image, size: "70x50") %>
+      <%= into_cart.item.name %>
+     </td>
+     <td>
+
+      <%= into_cart.item.price_without.to_s(:delimited) %>
+     </td>
+     <td>
+      <%= form_with model: into_cart, url: into_cart_path(into_cart), local: true do |f| %>
+       <%#= f.select :quantity , options_for_select((1..30).to_a) %>
+       <%= f.number_field :quantity, id: "quantity_cart", size: 550, min: 1%>
+       <%= f.submit "変更", class: "btn btn-info" %>
+
+      <% end %>
+     </td>
+     <td>
+      <%= into_cart.item.price_without*into_cart.quantity %>
+      <%#= into_cart.item.price_without.to_s(:delimited) %>
+     </td>
+     <td>
+      <%= link_to " 削除する", into_cart_path(into_cart.id), method: :delete, data: {confirm: "#{into_cart.item.name}を削除してよろしいですか？"}, class: "btn btn-danger" %>
+     </td>
    </tr>
     <% end %>
- </tbody> 
- 
-</table>
-<% end %>
+  </tbody>
+ </div></table>
+
+ <table>
+  <thead>
+   <tr>
+    <td>合計金額:¥<%= @sum %></td>
+    <td class="text-right">
+     <!--¥<#%= @total_price(@cart_items).to_s(:delimited) %>-->
+    </td>
+   </tr>
+  </thead>
+
+  <div>
+    <%= link_to " 買い物を続ける", items_path, class: "btn btn-info" %>
+  </div>
+
+  <div>
+    <%= link_to " 情報入力に進む", new_order_path, class: "btn btn-success" %>
+  </div>
+      </table>
+  </div>
+ </div>
+</div>
+

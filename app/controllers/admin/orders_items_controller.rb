@@ -1,5 +1,11 @@
 class Admin::OrdersItemsController < ApplicationController
+
   def update
+<<<<<<< HEAD
+    prod_status = Order.find(params[:id])
+    prod_status.update(prod_status_params)
+    redirect_to admin_order_path(order.id)
+=======
     order_item = OrderItem.find(params[:id])
     order = Order.find_by(id: order_item.order_id)
     order_item = order.order_items
@@ -12,6 +18,7 @@ class Admin::OrdersItemsController < ApplicationController
       order.update(status: "発送準備中")
     end
     redirect_to admin_order_path(order_item.order)
+>>>>>>> 8876049db369ffaa1fda415394f53c2275b4ef36
   end
 
   private

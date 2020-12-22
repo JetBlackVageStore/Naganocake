@@ -1,6 +1,7 @@
-
 <div class="container">
-  <h3>注文履歴詳細</h3>
+  <div class="row">
+    <h3 class="header-background col-xs-8 col-xs-offset-2">注文履歴詳細</h3>
+  </div>
   <div class="row">
     <div class="col-xs-8 col-xs-offset-2">
       <div class="order-customer">
@@ -13,11 +14,14 @@
       </div>
       <div class="order-pay">
         <h4>支払い方法</h4>
-        <%= @order.payjp_id %>
+        <%= @order.payment %>
       </div>
       <div class="order-status">
         <h4>注文ステータス</h4>
-
+        <%= form_with model: @order, url: admin_order_path, do |form| %>
+          <%= form.select :order_status, [['入金待ち', 0], ['入金確認', 1]], ['制作中', 2]], ['発送準備中', 3]], ['発送済み', 4]] { include_blank: true, selected: 0 }, { id: "order_status", class: "order_status" } %>
+        <% end %>
+        <%= link_to "更新", admin_order_path, method: :patch, class: btn btn-primary %>
       </div>
     </div>
   </div>
@@ -35,24 +39,27 @@
         </thead>
 
         <tbody>
+          <%= form_with model: @order, url: admin_order_path, do |form| %>
           <% @items.each do |item| %>
           <tr>
             <td>
               <%= item.name %>
             </td>
             <td>
-              <%=  %>
+              <%= item.plus_tax %>
             </td>
             <td>
               <%= item.count %>
             </td>
             <td>
-              <%= %> * <%= item.count %>
+              <%= item.plus_tax %> * <%= item.count %>
             </td>
             <td>
-
+              <%= form.select :prod_status, [['着手不可', 0], ['制作待ち', 1]], ['制作中', 2]], ['制作完了', 3]], { include_blank: true, selected: 0 }, { id: "prod_status", class: "prod_status" } %>
+              <%= link_to "更新", admin_orders_item_path, method: :patch, class: "btn btn-primary" %>
             </td>
           </tr>
+          <% end %>
           <% end %>
         </tbody>
       </table>

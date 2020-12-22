@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  get 'search/search'
   devise_for :customers, controller: {
     registrations: 'customers/registrations',
     sessions: 'customers/sessions',
@@ -11,7 +12,6 @@ Rails.application.routes.draw do
     sessions: 'admin/sessions',
     passwords: 'admin/passwords'
   }
-
 
   scope module: :customer do
     root to: 'homes#top'
@@ -50,7 +50,6 @@ Rails.application.routes.draw do
     end
 
   end
-
   namespace :admin do
     resources :items, only: %i[index show new create edit update]
     resources :customers, only: %i[index show edit update]
