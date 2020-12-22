@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  get 'search/search'
   devise_for :customers, controller: {
     registrations: 'customers/registrations',
     sessions: 'customers/sessions',
@@ -12,12 +13,16 @@ Rails.application.routes.draw do
     passwords: 'admin/passwords'
   }
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 294d59ab62f89bdeca3a5bbc62166abe76c3fc66
   scope module: :customer do
     root to: 'homes#top'
-    get 'homes/about'
+    get '/about' => "homes#about"
+
     resources :add_deliveries, only: %i[index create destroy edit update] do
     end
-  end
 
     resources :customers do
       collection do
@@ -50,7 +55,10 @@ Rails.application.routes.draw do
 
   end
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 294d59ab62f89bdeca3a5bbc62166abe76c3fc66
   namespace :admin do
     resources :items, only: %i[index show new create edit update]
     resources :customers, only: %i[index show edit update]
@@ -58,8 +66,6 @@ Rails.application.routes.draw do
     resources :orders, only: %i[index show update]
     resources :orders_items, only: [:update]
   end
-
-
 
 
   #https://qiita.com/hirokihello/items/fa82863ab10a3052d2ff
