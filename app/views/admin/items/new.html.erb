@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <div class="container">
   <div class="row">
     <h4 class="header-background col-xs-8 col-xs-offset-2">商品新規登録</h4>
@@ -83,3 +84,10 @@
     <% end %>
   </div>
 </div>
+=======
+<h4>商品新規登録</h4>
+
+  <%= form_with model: @item, url: admin_items_path, class: "form-horizontal", local: true do |f| %>
+    <% render "admin/items/form", f: f %>
+  <% end %>
+>>>>>>> 8876049db369ffaa1fda415394f53c2275b4ef36

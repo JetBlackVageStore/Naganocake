@@ -3,8 +3,7 @@ class Customer::IntoCartsController < ApplicationController
   end
 
   def index
-   @into_carts = current_cart
-   
+   @carts_items = current_cart
   end
 
   def destroy

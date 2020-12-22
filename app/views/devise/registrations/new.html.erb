@@ -1,88 +1,27 @@
-​
-<h2>新規会員登録</h2>
-​
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
-  
-    <%= f.label :"名前" %>
-    <%= f.label :"(姓)" %>
-    <%= f.text_field :surname %>
-    <%= f.label :"(名)" %>
-    <%= f.text_field :firstname, autofocus: true, autocomplete: "firstname" %>
-  <%= render "admins/shared/error_messages", resource: resource %>
-<<<<<<< HEAD
-​
-    <%= f.label :"フリガナ" %>
 <div class="row">
  <div class="col-xs-offset-1 col-xs-11">
-​
-=======
-
-    <%= f.label :"フリガナ" %>
-<div class="row">
- <div class="col-xs-offset-1 col-xs-11">
-
->>>>>>> 90c757d81b98fd083dfeaba8f0a301db7fbce9f1
   <h2>新規会員登録</h2>
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= render "admins/shared/error_messages", resource: resource %>
-  <h2>新規会員登録</h2>
-<<<<<<< HEAD
-​
-=======
 
->>>>>>> 90c757d81b98fd083dfeaba8f0a301db7fbce9f1
-  
   <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
    <%= render "devise/shared/error_messages", resource: resource %>
-  
-   <div class="field form-group col-xs-12">   
+
+   <div class="field form-group col-xs-12">
      <%= f.label :"名前",class: "col-sm-2 control-label" %>
      <%= f.label :"(姓)" %>
      <%= f.text_field :surname %>
      <%= f.label :"(名)" %>
      <%= f.text_field :firstname, autofocus: true, autocomplete: "firstname" %>
    </div>
-  
+
    <div class="field form-group col-xs-12">
     <%= f.label :"フリガナ", class: "col-sm-2 control-label" %>
     <%= f.label :"(セイ)" %>
     <%= f.text_field :surname_kana %>
     <%= f.label :"(メイ)" %>
-    <%= f.text_field :firstname_kana, autofocus: true, autocomplete: "firstname_kana" %>
-<<<<<<< HEAD
-​
-=======
-
->>>>>>> 90c757d81b98fd083dfeaba8f0a301db7fbce9f1
-    <%= f.label :"メールアドレス" %>
-    <%= f.text_field :email %>
-​
-    <%= f.label :"郵便番号" %>
-    <%= f.text_field :postal_code %>
-​
-    <%= f.label :"住所" %>
-    <%= f.text_field :address %>
-​
-    <%= f.label :"電話番号" %>
-    <%= f.text_field :phone_number %>
-​
-    <%= f.label :"パスワード(6文字以上)" %>
-    <%= f.password_field :password, autocomplete: "new-password" %>
-​
-    <%= f.label :"パスワード(確認用)" %>
-    <%= f.password_field :password, autocomplete: "new-password" %>
-​
-    <%= f.submit "新規登録" %>
-<% end %>
-<<<<<<< HEAD
-​
-=======
-
->>>>>>> 90c757d81b98fd083dfeaba8f0a301db7fbce9f1
-<%= render "devise/shared/links" %>
+    <%= f.text_field :firstname_kana, autofocus: true, autocomplete: "surname" %>
    </div>
-  
+
    <div class="field form-group col-xs-12">
     <%= f.label :"メールアドレス", class: "col-sm-2 control-label" %>
     <%= f.text_field :email %>
@@ -115,7 +54,7 @@
 ​
    <div class="field form-group col-xs-12">
     <%= f.submit "新規登録", class: "btn btn-success btn-lg col-xs-2" %>
-   </div>  
+   </div>
   <% end %>
 ​
   <div class="col-xs-7">
@@ -124,22 +63,12 @@
      <%= link_to "こちら",new_customer_session_path, class: "btn-link" %>からログインしてください。
     </p>
   </div>
-  
+
  </div>
 </div>
-<<<<<<< HEAD
-​
-<%= render "admins/shared/links" %>
+
 <%= render "admins/shared/links" %>
 ​
 
 ​
-<% end %>>
-
-=======
-
-<%= render "admins/shared/links" %>
-<%= render "admins/shared/links" %>
-
-<% end %>>
->>>>>>> 90c757d81b98fd083dfeaba8f0a301db7fbce9f1
+<% end %>
