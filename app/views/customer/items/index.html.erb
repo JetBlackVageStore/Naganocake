@@ -12,12 +12,13 @@
       <%= item.name %>
     <% end %>
      <% if item.item_status == true %>
-       <p>¥<%= item.price_without.to_s(:delimited) %></p>
-      <% elsif item.item_status == false %>
+       <p>¥<%= item.price_without.to_s(:delimited) %>
+       <p><%= item.name %></p>
+     <% elsif item.item_status == false %>
        <p>売り切れ中</p>
      <% end %>
   <% end %>
-  <% end %>
+ <% end %>
 
 <div><%= paginate(@items) %></div>
 	
