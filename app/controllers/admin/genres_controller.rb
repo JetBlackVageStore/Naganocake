@@ -1,8 +1,5 @@
 class Admin::GenresController < ApplicationController
-  def index
-    @genre = Genre.new
-    @genres = Genre.all
-  end
+
 
   def create
     @genre = Genre.new(genre_params)
@@ -12,6 +9,11 @@ class Admin::GenresController < ApplicationController
       @genres = Genre.all
       render "index"
     end
+  end
+
+  def index
+    @genre = Genre.new
+    @genres = Genre.all
   end
 
   def show

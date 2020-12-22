@@ -41,3 +41,27 @@
   right: 30px;
   align-items: center;
 }
+
+.row {
+  padding: 10px;
+}
+
+.header-background {
+  background-color: #eceff3;
+  text-align: center;
+}
+
+th {
+  background-color: #eceff3;
+}
+
+.add-item-btn {
+  border-radius: 50%;
+  width: 40px;
+  height: 36px;
+  background-color: #fff9ee;
+}
+
+.edit-btn {
+  text-align: center;
+}

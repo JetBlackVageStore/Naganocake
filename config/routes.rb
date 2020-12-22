@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  get 'search/search'
   devise_for :customers, controller: {
     registrations: 'customers/registrations',
     sessions: 'customers/sessions',
@@ -11,7 +12,6 @@ Rails.application.routes.draw do
     sessions: 'admin/sessions',
     passwords: 'admin/passwords'
   }
-
 
   scope module: :customer do
     root to: 'homes#top'
@@ -46,15 +46,12 @@ Rails.application.routes.draw do
       collection do
         post '/about' => 'orders#about'
         post '/completion' => 'orders#completion'
-        #get '/about' => 'orders#about'
-        
+        get '/about' => 'orders#about'
+        get '/completion' => 'orders#completion'
       end
     end
-
   end
-
   namespace :admin do
-    get "" => "homes#top"
     resources :items, only: %i[index show new create edit update]
     resources :customers, only: %i[index show edit update]
     resources :genres, only: %i[index show create edit update]

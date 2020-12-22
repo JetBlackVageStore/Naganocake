@@ -1,5 +1,4 @@
 class Genre < ApplicationRecord
-  belongs_to :item, optional: true
+  has_many :items
   validates :genre_name, presence: true
-  validates :is_active, inclusion: { in: [true, false] }
 end
