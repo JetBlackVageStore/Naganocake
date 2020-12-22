@@ -24,6 +24,10 @@ class Customer::CustomersController < ApplicationController
   end
 
   def withdraw
+    @customer = current_customer
+    reset_session
+    flash[:notice] = "ありがとうございました。またのご利用をお待ちしております。"
+    redirect_to root_path
   end
 
   private
