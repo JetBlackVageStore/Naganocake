@@ -11,6 +11,9 @@ class ApplicationController < ActionController::Base
     if current_customer
       flash[:notice] = "ログインに成功しました"
       items_path
+    elsif admin_signed_in?
+      flash[:notice] = "ログインに成功しました"
+      root_path
     else
       render "/customers/sign_up"
     end

@@ -1,9 +1,26 @@
-<strong>本当に退会しますか？</strong>
-  <div class="unsubscribe">
-      退会すると会員情報登録や<br>
-      これまでの購入履歴が閲覧できなくなります。<br>
-      退会する場合は,「退会する」をクリックしてください。
+<div class="container">
+  <div class="row">
+    <div class="col-xs-4 col-xs-offset-4">
+      <strong>本当に退会しますか？</strong>
+    </div>
   </div>
-  
-  <%= link_to "退会しない", customers_path %>
-  <%= link_to "退会する", withdraw_customers_path %>
+
+  <div class="row">
+    <div class="col-xs-4 col-xs-offset-4">
+      <p class="unsubscribe">
+        退会すると会員情報登録や<br>
+        これまでの購入履歴が閲覧できなくなります。<br>
+        退会する場合は,「退会する」をクリックしてください。
+      </p>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-xs-4 col-xs-offset-4">
+      <%= link_to "退会しない", customers_path, class: "btn btn-primary" %>
+      <%= link_to "退会する", withdraw_customers_path, class: "btn btn-danger" %>
+    </div>
+  </div>
+
+</div>
+

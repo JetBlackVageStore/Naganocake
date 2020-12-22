@@ -1,28 +1,36 @@
-<h2>ショッピングカート</h2>
+<div class="container">
+  <div class="row">
+    <h2 class="header-background col-xs-8 col-xs-offset-2">ショッピングカート</h2>
+  </div>
 
-<% if @into_carts.present? %>
+  <div class="row">
+    <div class="col-xs-12">
+      <% if @into_carts.present? %>
+    </div>
+  </div>
 
-<table>
- <thead>
-  <tr>
-    <th>商品名</th>
-    <th>単価(税込)</th>
-    <th>数量</th>
-    <th>小計</th>
-  </tr>
- </thead>
+  <table class="table table-hover table-inverse">
+    <thead>
+      <tr>
+        <th>商品名</th>
+        <th>単価(税込)</th>
+        <th>数量</th>
+        <th>小計</th>
+      </tr>
+    </thead>
 
- <tbody>
-   <tr>
-    <% @into_carts.each do |into_cart| %>
-     <td>商品名</td>
-     <td>単価（税込）</td>
-     <td>数量</td>
-     <td>小計</td>
-     <td>削除</td>
-   </tr>
-    <% end %>
- </tbody> 
- 
-</table>
-<% end %>
+    <tbody>
+      <tr>
+      <% @into_carts.each do |into_cart| %>
+       <td>商品名</td>
+       <td>単価（税込）</td>
+       <td>数量</td>
+       <td>小計</td>
+       <td>削除</td>
+      </tr>
+      <% end %>
+    </tbody>
+
+  </table>
+  <% end %>
+</div>
