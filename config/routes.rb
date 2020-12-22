@@ -13,10 +13,7 @@ Rails.application.routes.draw do
     passwords: 'admin/passwords'
   }
 
-<<<<<<< HEAD
-=======
 
->>>>>>> 294d59ab62f89bdeca3a5bbc62166abe76c3fc66
   scope module: :customer do
     root to: 'homes#top'
     get '/about' => "homes#about"
@@ -52,13 +49,9 @@ Rails.application.routes.draw do
         get '/about' => 'orders#about'
       end
     end
-
   end
 
-<<<<<<< HEAD
 
-=======
->>>>>>> 294d59ab62f89bdeca3a5bbc62166abe76c3fc66
   namespace :admin do
     resources :items, only: %i[index show new create edit update]
     resources :customers, only: %i[index show edit update]
@@ -73,3 +66,4 @@ Rails.application.routes.draw do
   #https://railsguides.jp/routing.html
   #https://debug-life.net/entry/103
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+end

@@ -1,7 +1,6 @@
 class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
 
-<<<<<<< HEAD
   #ログイン時に下記のカラム入力を許可
   protected
   def configure_permitted_parameters
@@ -10,21 +9,21 @@ class ApplicationController < ActionController::Base
 
 
   def after_sign_in_path_for(resource)
-      if current_customer
-        flash[:notice] = "ログインに成功しました"
-        items_path
-      else
-        render "/customers/sign_up"
-      end
+    if current_customer
+      flash[:notice] = "ログインに成功しました"
+      items_path
+    else
+      render "/customers/sign_up"
+    end
+  end
 
-=======
   def after_sign_in_path_for(resource)
-   case resource
-   when Admin
-   　 admin_orders_path
-   when Customer
-     root
-   end
+    case resource
+    when Admin
+        admin_orders_path
+    when Customer
+      root
+    end
   end
 
   protect_from_forgery with: :exception
@@ -40,25 +39,6 @@ class ApplicationController < ActionController::Base
     end
   end
 
-
-  #ログイン時に下記のカラム入力を許可
-
-  protected
-
-  def configure_permitted_parameters
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:surname, :firstname, :surname_kana, :firstname_kana, :postal_code, :address, :phone_number])
-  end
-
-  #admiｎとcustomerで分ける
-  def after_sign_in_path_for(resource)
-    case resource
-    when Admin
-      admin_orders_path
-    when Customer
-      root_path
-    end
->>>>>>> 294d59ab62f89bdeca3a5bbc62166abe76c3fc66
-  end
 
   #ログアウト時に遷移変更
   def after_sign_out_path_for(resource)
