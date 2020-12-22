@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
-  
+
   def after_sign_in_path_for(resource)
    case resource
    when Admin
@@ -8,24 +8,24 @@ class ApplicationController < ActionController::Base
    when Customer
      root
    end
-  end 
-  
+  end
+
   protect_from_forgery with: :exception
-  
+
   helper_method :current_cart
-  
+
   def current_cart
     if session[:into_cart_id]
       @cart = IntoCart.find(session[:into_cart_id])
     else
       @cart = IntoCart.create
       session[:into_cart_id] = @cart.id
-    end 
-  end 
-  
-  
+    end
+  end
+
+
   #ログイン時に下記のカラム入力を許可
-  
+
   protected
 
   def configure_permitted_parameters
@@ -34,22 +34,11 @@ class ApplicationController < ActionController::Base
 
   #admiｎとcustomerで分ける
   def after_sign_in_path_for(resource)
-<<<<<<< HEAD
-    if current_customer
-      flash[:notice] = "ログインに成功しました"
-      items_path
-    elsif admin_signed_in?
-      flash[:notice] = "ログインに成功しました"
-      root_path
-    else
-      render "/customers/sign_up"
-=======
     case resource
     when Admin
       admin_orders_path
     when Customer
       root_path
->>>>>>> 8876049db369ffaa1fda415394f53c2275b4ef36
     end
   end
 
