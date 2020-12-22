@@ -1,6 +1,11 @@
 class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
 
+
+  class Forbidden < ActionController::ActionControllerError; end
+  class IpAddressRejected < ActionController::ActionControllerError; end
+  include ErrorHandlers if Rails.env.production?
+
   protected
 
   def configure_permitted_parameters
@@ -13,7 +18,7 @@ class ApplicationController < ActionController::Base
     when Admin
       admin_orders_path
     when Customer
-      root
+      root_path
     end
   end
 
@@ -21,4 +26,7 @@ class ApplicationController < ActionController::Base
   def after_sign_out_path_for(resource)
     root_path
   end
+
+
+
 end
