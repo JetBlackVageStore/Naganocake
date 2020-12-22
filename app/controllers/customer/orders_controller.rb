@@ -10,6 +10,9 @@ class Customer::OrdersController < ApplicationController
   end
 
   def create
+    @order = current_customer.orders.new(order_params)
+    @order.save
+    redirect_to completion_orders_path
   end
 
   def completion
@@ -25,7 +28,7 @@ class Customer::OrdersController < ApplicationController
   def about
     # @order = current_customer.orders.new(order_params)
     # @order.save
-    # @into_carts = IntoCart.all
+    @into_carts = IntoCart.where(customer: current_customer)
     @order = Order.new(order_params)
     #@order.save
      @add_deliveries = AddDelivery.where(customer: current_customer)
@@ -42,13 +45,12 @@ class Customer::OrdersController < ApplicationController
       @order.address = name.address
       @order.addressee = name.addressee
 
-     elsif params[:order][:name]= "new_address"
-       name = current_customer.add_deliveries.find(params[:order])
-       @order.postal_code = name.postal_code
-       @order.address = name.address
-       @order.addressee = name.addressee
-     elsif params[:order] = "params_inuput"
+     elsif params[:order][:post] = "new_address"
+      @order.postal_code = params[:order][:postal_code]
+      @order.address = params[:order][:address]
+      @order.addressee = params[:order][:addressee]
      end
+
   end
   private
   def order_params
