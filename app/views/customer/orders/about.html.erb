@@ -13,18 +13,22 @@
         <tbody>
           <% @into_carts.each do |cart| %>
             <tr>
+              <!--商品名-->
               <td class="text-left">
                 <%= attachment_image_tag(cart.item, :image, size: "60x50", fallback: "no_image.jpg") %>
                 <%= cart.item.name %>
               </td>
+              <!--単価(税込)-->
               <td class="text-right">
                 ¥<%= price_with(cart.item.price_with).to_s(:delimited) %>
               </td>
+              <!--数量-->
               <td class="text-right">
                   <%= cart.quantity %>
               </td>
+              <!--小計-->
               <td class="text-right">
-                ¥<%= sub_price(cart).to_s(:delimited) %>
+                ¥<%= price_with(cart.item.price_with) * cart.quantity.to_s(:delimited) %>
               </td>
             </tr>
           <% end %>
@@ -39,11 +43,11 @@
           </tr>
           <tr>
             <th class="info">商品合計</th>
-            <td class="text-right">¥<%= %></td>
+            <td class="text-right">¥<%= @total_price %></td>
           </tr>
           <tr>
             <th class="info">請求金額</th>
-            <td class="text-right">¥<%= %></td>
+            <td class="text-right">¥<%= @total_price + 800 %></td>
           </tr>
       </table>
     </div>
@@ -58,7 +62,7 @@
         <tr>
           <th  class="info">お届け先</th>
           <td class="text-left">
-            <%= @order.postal_code %> <%= @order.address %>　<%= @order.addressee %>
+            〒<%= @order.postal_code %> <%= @order.address %>　<%= @order.addressee %>&nbsp;様/御中
           </td>
         </tr>
       </table>
@@ -79,8 +83,8 @@
       <%# end %>
       </div>
     <%# else %>
-        <p>お客様のショッピングカートに商品はありませんので注文確定ができません。</p>
-        <p><%= link_to "商品一覧", items_path %>から商品をお探し下さい。</p>
+        
+        <p><%= link_to "商品一覧", items_path %>へ</p>
     <%# end %>
   </div>
 </div>

@@ -26,7 +26,7 @@ class Customer::OrdersController < ApplicationController
   end
 
   def about
-    # @order = current_customer.orders.new(order_params)
+    @order = current_customer.orders.new(order_params)
     # @order.save
     @into_carts = IntoCart.where(customer: current_customer)
     @order = Order.new(order_params)
@@ -46,10 +46,13 @@ class Customer::OrdersController < ApplicationController
       @order.addressee = name.addressee
 
      elsif params[:order][:post] = "new_address"
+      @order = AddDelivery.new
       @order.postal_code = params[:order][:postal_code]
       @order.address = params[:order][:address]
       @order.addressee = params[:order][:addressee]
      end
+
+     @total_price = 0
 
   end
   private
