@@ -13,7 +13,6 @@ Rails.application.routes.draw do
     passwords: 'admin/passwords'
   }
 
-
   scope module: :customer do
     root to: 'homes#top'
     get '/about' => "homes#about"
@@ -45,13 +44,11 @@ Rails.application.routes.draw do
 
     resources :orders, only: %i[new create index show] do
       collection do
+        post '/about' => 'orders#about'
         post '/completion' => 'orders#completion'
-        get '/about' => 'orders#about'
       end
     end
   end
-
-
   namespace :admin do
     resources :items, only: %i[index show new create edit update]
     resources :customers, only: %i[index show edit update]

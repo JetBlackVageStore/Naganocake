@@ -15,24 +15,18 @@
         </thead>
 
         <tbody>
-          <% @orders.each do |order| %>
+        <% @orders.each do |order| %>
           <tr>
             <td>
-              <%= order.created_at %>
+              <%= order.created_at.strftime('%Y/%m/%d　%H:%M:%S') %>
             </td>
-            <td>
-              <%= order.customers.surname %>
-              <%= order.customers.firstname %>
-            </td>
-            <td>
-              <%= order.items.count %>
-            </td>
-            <td>
-              <%= order.order_status %>
+            <td><%= order.customer.surname %><%= order.customer.firstname %></td>
+            <td><%= order.order_items.all.sum(:quantity) %></td>
+            <td><%= order.order_status %></td>
             </td>
           </tr>
           <% end %>
-          <%= paginate @orders %>
+
         </tbody>
       </table>
     </div>

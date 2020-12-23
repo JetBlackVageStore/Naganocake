@@ -6,6 +6,7 @@ class Customer < ApplicationRecord
 
   has_many :add_deliveries, dependent: :destroy
   has_many :orders
+  has_many :into_carts, dependent: :destroy
   has_many :into_items, dependent: :destroy
 
   validates :surname, :firstname, :surname_kana, :firstname_kana,
@@ -27,4 +28,19 @@ class Customer < ApplicationRecord
   #validates :password_confirmation, presence: true
 
   validates :is_active, inclusion: { in: [true, false] }
+     
+  enum user_status: { '有効': true, '退会済': false }
+
+#def active_for_authentication?
+  #super && self.user_status == '有効'
+#end
+
+  #パスワードvaridate＋再確認⇨これをつけるとmypageでupdateできなくなる⇨なぜ？
+  # validates :password, confirmation: true
+  # validates :password_confirmation, presence: true
+
+  # has_many :add_deliveries, dependent: :destroy
+  # has_many :orders
+  # has_many :into_items, dependent: :destroy
+
 end

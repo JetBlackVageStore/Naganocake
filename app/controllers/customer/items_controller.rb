@@ -40,4 +40,3 @@ class Customer::ItemsController < ApplicationController
 #   end
 #   end
 end
-

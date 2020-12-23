@@ -1,8 +1,93 @@
 <div class="container">
   <div class="row">
+<<<<<<< HEAD
     <h2 class="header-background col-xs-3 col-xs-offset-1">商品新規登録</h2>
   </div>
   <%= form_with model: @item, url: admin_items_path, class: "form-horizontal", local: true do |f| %>
     <% render "admin/items/form", f: f %>
   <% end %>
+=======
+    <h4 class="header-background col-xs-8 col-xs-offset-2">商品新規登録</h4>
+
+    <%= form_with model: @item, url: admin_items_path, class: "form-horizontal", local: true do |f| %>
+      <div class="col-xs-2">
+        <div class="form_group">
+          <%= f.attachment_field :image %>
+        </div>
+      </div>
+
+      <div class="col-xs-8 col-xs-offset-1">
+        <div class="row form_group">
+          <%= f.label :name, "商品名", class: "control-label col-xs-2" %>
+          <div class="col-xs-5">
+            <%= f.text_field :name, class: "form-control" %>
+          </div>
+        </div>
+
+        <div class="row form_group">
+          <%= f.label :specifcation, "商品説明", class: "control-label col-xs-2" %>
+          <div class="col-xs-5">
+            <%= f.text_field :specifcation, class: "form-control introduction-form" %>
+          </div>
+        </div>
+
+        <% if request.path_info == new_admin_item_path %>
+
+          <div class="row form_group">
+            <%= f.label :genre_id, "ジャンル", class: "control-label col-xs-2" %>
+            <div class="col-xs-5">
+              <%= f.collection_select :genre_id, Genre.all, :id, :genre_name, { prompt: "--選択してください--" }, class: "form-control" %>
+            </div>
+          </div>
+
+        <% else %>
+
+          <div class="row form_group">
+            <%= f.label :genre_id, "ジャンル", class: "control-label col-xs-2" %>
+            <div class="col-xs-5">
+              <%= f.collection_select :genre_id, Genre.all, :id, :genre_name, {}, { class: "form-control" } %>
+            </div>
+          </div>
+
+        <% end %>
+
+        <div class="row form_group">
+          <%= f.label :price_without, "税抜価格", class: "control-label col-xs-2" %>
+          <div class="col-xs-5", style="display:inline-flex">
+            <%= f.number_field :price_without, min: 0, class: "form-control" %> 円
+          </div>
+        </div>
+
+        <% if request.path_info == new_admin_item_path %>
+
+          <div class="row form-group">
+            <%= f.label :item_status, "販売ステータス", class: "control-label col-xs-2" %>
+            <div class="col-xs-6">
+              <%= f.select :item_status, [["販売中", true], ["売り切れ", false]], { include_blank: "--選択して下さい--", selected: 0 }, { class: "form-control" } %>
+            </div>
+          </div>
+          </div>
+
+          <div class="actions">
+            <%= f.submit "新規登録", class: "btn btn-info pull-right btn-lg" %>
+          </div>
+
+        <% else %>
+
+          <div class="row form_group">
+            <%= f.label :item_status, "販売ステータス", class: "control-label col-xs-2" %>
+            <div class="col-xs-6">
+              <%= f.select :item_status, [["販売中", true], ["販売中止", false]], {}, { class: "form-control" } %>
+            </div>
+          </div>
+          </div>
+
+          <div class="actions">
+            <%= f.submit "変更を保存", class: "btn btn-info pull-right btn-lg" %>
+          </div>
+
+        <% end %>
+    <% end %>
+    </div>
+>>>>>>> 60737d788f4fb926f995334ea8f40b3450328a89
 </div>
