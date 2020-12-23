@@ -13,25 +13,12 @@ class Customer::CustomersController < ApplicationController
     @customer = Customer.find(params[:id])
     @customer = current_customer
 		if @customer.update(customer_params)
-<<<<<<< HEAD
   		  flash[:success] = "登録情報を変更しました"
   		  redirect_to my_page_customers_path
   		else
   		  render "edit"
   		end
 
-	if @customer.update(customer_params)
-=======
->>>>>>> master
-  		flash[:success] = "登録情報を変更しました"
-  		redirect_to my_page_customers_path
-  	else
-  		render "edit"
-  	end
-<<<<<<< HEAD
-
-=======
->>>>>>> master
   end
 
   def unsubscribe
