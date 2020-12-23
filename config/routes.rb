@@ -50,6 +50,7 @@ Rails.application.routes.draw do
       end
     end
   end
+
   namespace :admin do
     resources :items, only: %i[index show new create edit update]
     resources :customers, only: %i[index show edit update]
@@ -65,3 +66,4 @@ Rails.application.routes.draw do
   #https://debug-life.net/entry/103
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
+
