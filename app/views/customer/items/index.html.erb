@@ -1,26 +1,22 @@
-<%= render "customer/items/search", genres: @genres %>
-
-<h2>商品一覧</h2>
-<h2>全<%= @items.count %>件</h2>
-
- <% @items.each do |item| %>
-  <% if item.item_status == true %>
-
-    <%= link_to item_path(item.id) do %>
-     <%= attachment_image_tag(item, :image, size: "300x200") %>
-      <%= item.name %>
+<div class="container">
+  <div class="col-xs-2">
+    <%= render "customer/items/search", genres: @genres %>
+  </div>
+  <h2>商品一覧</h2>
+  <h2>全<%= @items.count %>件</h2>
+  <% @items.each do |item| %>
+    <% if item.item_status == true %>
+      <%= link_to item_path(item.id) do %>
+        <%= attachment_image_tag(item, :image, size: "300x200") %>
+        <%= item.name %>
+      <% end %>
+        <% if item.item_status == true %>
+          <p>¥<%= item.price_without.to_s(:delimited) %>
+          <p><%= item.name %></p>
+        <% elsif item.item_status == false %>
+          <p>売り切れ中</p>
+        <% end %>
     <% end %>
-
-     <% if item.item_status == true %>
-       <p>¥<%= item.price_without.to_s(:delimited) %>
-       <p><%= item.name %></p>
-
-     <% elsif item.item_status == false %>
-       <p>売り切れ中</p>
-     <% end %>
-
   <% end %>
- <% end %>
-
-<!--<div><%#= paginate(@items) %></div>-->
-	
+  <div><%= paginate(@items) %></div>
+</div>

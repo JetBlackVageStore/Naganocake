@@ -1,4 +1,5 @@
 class Order < ApplicationRecord
+
 	belongs_to :customer
 	has_many :order_items, dependent: :destroy
 
@@ -14,6 +15,12 @@ class Order < ApplicationRecord
 	  self.order_status ||= 0
 	end
 
+	# enum prod_status: {"着手不可": 0, "制作待ち": 1, "制作中": 2, "制作完了": 3}
+
+	def plus_tax
+    @plus_tax_price = price_without * 1.10
+    @plus_tax_price.floor
+	end
 
 
 
