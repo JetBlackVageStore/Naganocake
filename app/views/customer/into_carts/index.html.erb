@@ -54,8 +54,7 @@
       <% end %>
      </td>
      <td>
-      <%= into_cart.item.price_without*into_cart.quantity %>
-      <%#= into_cart.item.price_without.to_s(:delimited) %>
+      <%= into_cart.item.price_without.to_i * into_cart.quantity.to_i %>
      </td>
      <td>
       <%= link_to " 削除する", into_cart_path(into_cart.id), method: :delete, data: {confirm: "#{into_cart.item.name}を削除してよろしいですか？"}, class: "btn btn-danger" %>
@@ -63,7 +62,8 @@
    </tr>
     <% end %>
   </tbody>
- </div></table>
+ </div>
+ </table>
 
  <table>
   <thead>

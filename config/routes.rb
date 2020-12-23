@@ -46,8 +46,7 @@ Rails.application.routes.draw do
       collection do
         post '/about' => 'orders#about'
         post '/completion' => 'orders#completion'
-        get '/about' => 'orders#about'
-        get '/completion' => 'orders#completion'
+
       end
     end
   end

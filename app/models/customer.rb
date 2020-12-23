@@ -31,9 +31,9 @@ class Customer < ApplicationRecord
      
   enum user_status: { '有効': true, '退会済': false }
 
-#def active_for_authentication?
-  #super && self.user_status == '有効'
-#end
+  def active_for_authentication?
+    super && self.user_status == '有効'
+  end
 
   #パスワードvaridate＋再確認⇨これをつけるとmypageでupdateできなくなる⇨なぜ？
   # validates :password, confirmation: true

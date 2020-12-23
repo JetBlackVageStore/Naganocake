@@ -1,4 +1,5 @@
                       Prefix Verb   URI Pattern                                                                              Controller#Action
+               search_search GET    /search/search(.:format)                                                                 search#search
         new_customer_session GET    /customers/sign_in(.:format)                                                             devise/sessions#new
             customer_session POST   /customers/sign_in(.:format)                                                             devise/sessions#create
     destroy_customer_session DELETE /customers/sign_out(.:format)                                                            devise/sessions#destroy

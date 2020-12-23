@@ -1,2 +1,23 @@
-<h1>Customer::AddDeliveries#edit</h1>
-<p>Find me in app/views/customer/add_deliveries/edit.html.erb</p>
+<div class="row">
+  <div class="col-md-12">
+<h2>配送先編集</h2>
+
+<%= form_with model: @add_delivery, local: true do |f| %>
+  <table>
+    <tr>
+      <th><%= f.label :"郵便番号(ハイフンなし)" %></th>
+      <td><%= f.text_field :postal_code %></td>
+    </tr>
+    <tr>
+      <th><%= f.label :"住所" %></th>
+      <td><%= f.text_field :address     %></td>
+    </tr>
+    <tr>
+      <th><%= f.label :"宛名" %></th>
+      <td><%= f.text_field :addressee   %></td>
+    </tr>
+  </table>
+  <%= f.submit "編集する", class:"btn btn-primary btn-md" %>
+<% end %>
+  </div>
+</div>

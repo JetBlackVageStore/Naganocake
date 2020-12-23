@@ -7,14 +7,27 @@ class Customer::OrdersController < ApplicationController
   end
 
   def show
+    @order = Order.find(params[:id])
+    @order_items = OrderItem.where(order_id: @order.id)
   end
 
   def create
+
+    @into_carts = IntoCart.where(customer_id: current_customer.id).includes(:item)
+    @sum = 0
+    @into_carts.each do |cart|
+      price = cart.item.price_without.to_i
+      @sum = @sum + ( price*cart.quantity )
+    end
+
+    @charge = 800
+    @order_status = 0
+
+    #@order = Order.where(customer_id: current_customer.id)
     @order = current_customer.orders.new(order_params)
     @order.save
     redirect_to completion_orders_path
-    
-    @into_carts = current_cart
+
   end
 
   def completion
@@ -26,10 +39,9 @@ class Customer::OrdersController < ApplicationController
 
   def about
     @order = current_customer.orders.new(order_params)
-    # @order.save
     @into_carts = IntoCart.where(customer: current_customer)
     @order = Order.new(order_params)
-    #@order.save
+
     @add_deliveries = AddDelivery.where(customer: current_customer)
     #@into_carts = IntoCart.all
     if params[:order][:post] == "residence"
@@ -52,7 +64,14 @@ class Customer::OrdersController < ApplicationController
       @order.save
     end
 
-     @total_price = 0
+     @into_carts = IntoCart.where(customer_id: current_customer.id).includes(:item)
+    @sum = 0
+    @into_carts.each do |cart|
+      cart.quantity = cart.quantity.to_i
+      price = cart.item.price_without.to_i
+      @sum = @sum + ( price * cart.quantity )
+    end
+
   end
 
   private
