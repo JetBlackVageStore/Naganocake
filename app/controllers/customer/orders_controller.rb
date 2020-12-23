@@ -13,6 +13,8 @@ class Customer::OrdersController < ApplicationController
     @order = current_customer.orders.new(order_params)
     @order.save
     redirect_to completion_orders_path
+    
+    @into_carts = current_cart
   end
 
   def completion
@@ -47,7 +49,7 @@ class Customer::OrdersController < ApplicationController
       @order.postal_code = params[:order][:postal_code]
       @order.address = params[:order][:address]
       @order.addressee = params[:order][:addressee]
-      
+      @order.save
     end
 
      @total_price = 0
