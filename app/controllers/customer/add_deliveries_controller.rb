@@ -18,16 +18,23 @@ class Customer::AddDeliveriesController < ApplicationController
 
   def destroy
     @add_delivery = AddDelivery.find(params[:id])
-    @add_delivery.save
+    @add_delivery.destroy
     @add_deliveries = current_customer.add_deliveries
     flash.now[:alert] = "配送先を削除しました"
     redirect_to add_deliveries_path
   end
 
   def edit
+    @add_delivery = AddDelivery.find(params[:id])
   end
 
   def update
+    @add_delivery = AddDelivery.find(params[:id])
+    if @add_delivery.update(add_delivery_params)
+      redirect_to add_deliveries_path
+    else
+      render :edit
+    end
   end
 
   private

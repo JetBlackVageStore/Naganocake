@@ -37,7 +37,8 @@
 
         <tbody>
           <% @add_deliveries.each do |add_delivery| %>
-          <tr><%= add_delivery.id %>
+          <tr>
+            <td><%= add_delivery.id %></td>
             <td><%= add_delivery.postal_code %></td>
             <td><%= add_delivery.address %></td>
             <td><%= add_delivery.addressee %></td>
@@ -45,7 +46,7 @@
               <%= link_to "編集する",edit_add_delivery_path(add_delivery), class: "btn btn-primary" %>
             </td>
             <td>
-              <%= link_to "削除する",add_delivery_path(add_delivery), method: :delete, data: {confirm: "本当に削除してもよろしいですか？"}, remote: true, class: "btn btn-danger" %>
+              <%= link_to "削除する",add_delivery_path(add_delivery), method: :delete, data: {confirm: "本当に削除してもよろしいですか？"}, locale: true, class: "btn btn-danger" %>
             </td>
           </tr>
           <% end %>
