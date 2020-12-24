@@ -8,7 +8,10 @@ class Customer::OrdersController < ApplicationController
 
   def show
     @order = Order.find(params[:id])
-    @order_items = OrderItem.where(order_id: @order.id)
+    @order_items = @order.order_items
+
+
+
   end
 
   def create
@@ -23,7 +26,7 @@ class Customer::OrdersController < ApplicationController
     @charge = 800
     @order_status = 0
 
-    #@order = Order.where(customer_id: current_customer.id)
+    @order = Order.where(customer_id: current_customer.id)
     @order = current_customer.orders.new(order_params)
     @order.save
     redirect_to completion_orders_path
@@ -31,10 +34,21 @@ class Customer::OrdersController < ApplicationController
   end
 
   def completion
+    # 注文完了後カート空
+    @into_carts = current_customer.into_carts
+    @into_carts.destroy_all
   end
 
   def index
-    @orders = Order.all
+    @order = Order.where(customer_id: current_customer)
+    @orders = @order.all
+    # @orders = current_customer.orders
+    @into_carts = IntoCart.where(customer_id: current_customer.id).includes(:item)
+    @sum = 0
+    @into_carts.each do |cart|
+      price = cart.item.price_without.to_i
+      @sum = @sum + ( price*cart.quantity )
+    end
   end
 
   def about
@@ -64,13 +78,14 @@ class Customer::OrdersController < ApplicationController
       @order.save
     end
 
-     @into_carts = IntoCart.where(customer_id: current_customer.id).includes(:item)
     @sum = 0
     @into_carts.each do |cart|
       cart.quantity = cart.quantity.to_i
       price = cart.item.price_without.to_i
-      @sum = @sum + ( price * cart.quantity )
+      @sum = @sum +  ( price * cart.quantity )
     end
+
+
 
   end
 

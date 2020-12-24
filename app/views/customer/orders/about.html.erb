@@ -31,7 +31,7 @@
               <!--小計-->
               <td class="text-right">
                 ¥<%= (cart.quantity.to_i * cart.item.price_without.to_i).to_s.reverse.gsub( /(\d{3})(?=\d)/, '\1,').reverse  %>
-  
+
               <!--¥<%#= price_with(cart.item.price_with) * cart.quantity.to_s(:delimited) %>-->
                 <%#= cart.item.price_without.to_s(:delimited) %>
 
@@ -74,7 +74,7 @@
       </table>
 
       <div class ="col-xs-11">
-      <%= form_with model: @order, url: orders_path, method: :post, local: true do |f| %>
+      <%= form_with model: @order, url: completion_orders_path, method: :post, local: true do |f| %>
         <%= f.hidden_field :postal_code %>
         <%= f.hidden_field :address %>
         <%= f.hidden_field :addressee %>
