@@ -1,0 +1,75 @@
+<h4 class="customer-index">注文情報入力</h4>
+
+<div class="orders-new-info">
+  <div class="">
+    <h4 class="orders-new-info-index">支払方法</h4>
+    <div>
+      <%= form_with model:@order, url:about_orders_path, method: :post, local: true  do |f| %>
+
+
+        <div class="orders-new-payment-select">
+          <p>
+            <%= f.radio_button :payjp_id, "クレジットカード", checked: true %>
+            <%= f.label :payjp_id, "クレジットカード" %>
+          </p>
+          <p>
+            <%= f.radio_button :payjp_id, "銀行振込" %>
+            <%= f.label :payjp_id, "銀行振込" %>
+          </p>
+        </div>
+
+        <div class="">
+          <h4 class="orders-new-info-index">お届け先</h4>
+          <div class="orders-new-select">
+            <div class="orders-new-costomer-address">
+              <div>
+                <%= f.radio_button :post, "residence"  %>
+                <%= f.label :post, "ご自身の住所", checked: true %><br>
+                <%= "〒#{current_customer.postal_code} #{current_customer.address}" %>
+              </div>
+              <p class="orders-new-address">
+                <%= current_customer.postal_code %>
+                <%= current_customer.address %>
+              </p>
+              <p class="orders-new-address">
+                <%= "#{current_customer.surname} #{current_customer.firstname}" %>
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="orders-new-address-select">
+          <%= f.radio_button :post, "add_deliveries" %>
+          <%= f.label :post, "登録済住所から選択" %><br>
+          <%= f.collection_select(:add_delivery_id, @add_deliveries, :id, :address) %>
+        </div>
+
+        　   <div class="orders-new-address-input">
+      　     <div>
+      <%= f.radio_button :post, "new_address" %>
+      <%= f.label :post, "新しいお届け先" %><br>
+
+      <div class="field form-group col-xs-11">
+        <%= f.label :postal_code, "郵便番号(ハイフンなし)", class: "col-sm-4 control-label" %>
+        <%= f.text_field :postal_code, class: "col-sm-3 form-control-static postal_code" %>
+      </div>
+
+      <div class="field form-group col-xs-11">
+        <%= f.label :address, "住所", class: "col-sm-4 control-label" %>
+        <%= f.text_field :address, class: "col-sm-8 form-control-static address" %>
+      </div>
+
+      <div class="field form-group col-xs-11">
+        <%= f.label :addressee,"宛名", class: "col-sm-4 control-label" %>
+        <%= f.text_field :addressee, class: "col-sm-4 form-control-static" %>
+      </div>
+    </div>
+
+        <div class="orders-new-confirm-button">
+          <div class="btn col-xs-6">
+            <%= f.submit "確認画面へ進む", class: "btn btn-success col-xs-5" %>
+          </div>
+      <% end %>
+    </div>
+  </div>
+</div>

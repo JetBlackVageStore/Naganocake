@@ -1,0 +1,19 @@
+// Place all the styles related to the customer::Items controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+.index-items {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.index-items-box:nth-child(1) {
+  margin-right: 5px;
+}
+
+.index-items-box:nth-child(2) {
+  margin-right: 5px;
+}
+
+.index-items-box:nth-child(3) {
+  margin-right: 5px;
+}

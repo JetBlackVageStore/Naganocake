@@ -1,0 +1,4 @@
+<h2>商品編集</h2>
+<%= form_with model: @item, url: admin_item_path(@item), local: true, class: "form-horizontal" do |f| %>
+  <% render "admin/items/form", f: f %>
+<% end %>

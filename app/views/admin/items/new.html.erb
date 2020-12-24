@@ -1,0 +1,8 @@
+<div class="container">
+  <div class="row">
+    <h2 class="header-background col-xs-3 col-xs-offset-1">商品新規登録</h2>
+  </div>
+  <%= form_with model: @item, url: admin_items_path, class: "form-horizontal", local: true do |f| %>
+    <% render "admin/items/form", f: f %>
+  <% end %>
+</div>

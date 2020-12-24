@@ -1,0 +1,38 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-3">
+      <%= render "customer/items/search", genres: @genres %>
+    </div>
+
+    <div class="col-xs-9">
+      <div class="row">
+        <h2>
+          商品一覧（全<%= @items.count %>件）
+        </h2>
+      </div>
+
+      <div class="row">
+        <div class="col-xs-12">
+            <div class="index-items">
+              <% @items.each do |item| %>
+              <div class="index-items-box">
+                <div class="item-images-box">
+                  <%= link_to item_path(item) do %>
+                    <%= attachment_image_tag item, :image, size: "195x160" , format: 'jpg' %>
+                </div>
+                <div class="item-name-box">
+                  <%= item.name %>
+                </div>
+                    <% end %>
+                <div class="item-price_with-box">
+                  ¥<%= item.price_without.to_s.reverse.gsub( /(\d{3})(?=\d)/, '\1,').reverse %>
+                </div>
+              </div>
+              <% end %>
+            </div>
+          </div>
+      </div>
+    </div>
+  </div>
+  <%= paginate(@items) %>
+</div>

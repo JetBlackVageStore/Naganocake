@@ -1,0 +1,83 @@
+<div class="container">
+  <div class="row">
+    <h2 class="header-background col-xs-3 col-xs-offset-2">登録情報編集</h2>
+  </div>
+  <%= form_with(model:@customer, url:customer_path(@customer), local: true ,method: :patch) do |f| %>
+  <div class="row">
+    <div class="col-xs-2 col-xs-offset-2">
+      <%= f.label :"名前" %>
+    </div>
+    <div class="col-xs-3">
+      <%= f.label :"(姓)", class: "col-xs-4"%>
+      <%= f.text_field :surname %>
+    </div>
+    <div class="col-xs-3">
+      <%= f.label :"(名)", class: "col-xs-4"%>
+      <%= f.text_field :firstname, autofocus: true, autocomplete: "firstname" %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-xs-2 col-xs-offset-2">
+      <%= f.label :"フリガナ" %>
+    </div>
+    <div class="col-xs-3">
+      <%= f.label :"(セイ)", class: "col-xs-4"%>
+      <%= f.text_field :surname_kana %>
+    </div>
+    <div class="col-xs-3">
+      <%= f.label :"(メイ)", class: "col-xs-4"%>
+      <%= f.text_field :firstname_kana, autofocus: true, autocomplete: "firstname_kana" %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-xs-2 col-xs-offset-2">
+      <%= f.label :"メールアドレス" %>
+    </div>
+    <div class="col-xs-3">
+      <span class="col-xs-offset-4"></span>
+      <%= f.text_field :email %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-xs-2 col-xs-offset-2">
+      <%= f.label :"郵便番号" %>
+    </div>
+    <div class="col-xs-3">
+      <span class="col-xs-offset-4"></span>
+      <%= f.text_field :postal_code %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-xs-2 col-xs-offset-2">
+      <%= f.label :"住所" %>
+    </div>
+    <div class="col-xs-3">
+      <span class="col-xs-offset-4"></span>
+      <%= f.text_field :address, :size => "62*60" %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-xs-2 col-xs-offset-2">
+      <%= f.label :"電話番号" %>
+    </div>
+    <div class="col-xs-3">
+      <span class="col-xs-offset-4"></span>
+      <%= f.text_field :phone_number %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="actions col-xs-3 col-xs-offset-3">
+      <%= f.submit "編集内容を保存する", class: "btn btn-primary btn-block" %>
+    </div>
+    <div class="col-xs-2 col-xs-offset-2">
+      <%= link_to "退会する", unsubscribe_customers_path, class: "glyphicon glyphicon-tint btn btn-danger btn-block" %>
+    </div>
+  </div>
+  <% end %>
+</div>

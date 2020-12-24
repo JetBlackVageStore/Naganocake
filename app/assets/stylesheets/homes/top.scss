@@ -1,0 +1,29 @@
+.top-text {
+  display: inline-block;
+}
+
+.background {
+  height: 300px;
+  background-image: image-url('top_image.jpg');
+  background-size: 100% 100%;
+  background-position: top center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.top-text-box {
+  background-color: #FFF9EE;
+}
+
+.recommend-items {
+  display: flex;
+}
+
+.recommend-items-box {
+  margin-right: 12px;
+}
+
+.item-name-box {
+  padding: 5px 0;
+}
