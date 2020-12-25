@@ -1,30 +1,21 @@
 class Admin::OrdersItemsController < ApplicationController
 
-  def index
-    @orders = Order.order(“id DESC”).page(params[:page]).per(10)
-    @order_items = OrderItem.all
-  end
+    def update
+      @order_item = OrderItem.find(params[:id])
+      @order = Order.find(@order_item.order_id)
+      @order_item.update(order_item_params)
+      @order.update(order_status: 2 ) if @order_item.prod_status == 2
+      @order_item_finds = OrderItem.where(order_id: @order.id)
+      @order.update(order_status: 3 ) unless @order_item_finds.where(prod_status: 2).exists?
 
-  def show
-    @orders = Order.all
-    @order = Order.find(params[:id])
-    @order_items = OrderItem.all
-  end
-
-  def update
-    @order = Order.find(params[:id])
-    @order.update(order_params)
-    if @order.order_status == 1
-      @order_items = OrderItem.all
-      @order_items.each do |order_item|
-        order_item.update(prod_status: 1) if @order.id == order_item.order_id
-      end
+      redirect_to admin_order_path(@order_item.order_id)
     end
-    redirect_to admin_order_path(@order)
-  end
 
   private
-  def order_params
-    params.require(:order).permit(:prod_status)
+
+  def order_item_params
+      params.require(:order_item).permit(:order_id, :prod_status)
   end
+
+
 end
