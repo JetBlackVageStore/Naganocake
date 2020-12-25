@@ -17,7 +17,7 @@ class Admin::OrdersController < ApplicationController
     if @order.order_status == 1
       @order_items = OrderItem.all
       @order_items.each do |order_item|
-        order_item.update(prod_status: 1 ) if @order.id == order_item.order_id
+        order_item.update(prod_status: 1) if @order.id == order_item.order_id
       end
     end
     redirect_to admin_order_path(@order)
@@ -25,7 +25,7 @@ class Admin::OrdersController < ApplicationController
 
   private
   def order_params
-    params.require(:order).permit(:prod_status)
+    params.require(:order).permit(:order_status)
   end
 
 

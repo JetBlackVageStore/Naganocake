@@ -63,7 +63,7 @@
 
             <td>
               <%= form_with model: oi, url: admin_orders_item_path(oi), method: :patch, local: true do |f| %>
-                <%= f.select :making_status, OrderItem.prod_statuses.keys %>
+                <%= f.select :prod_status, OrderItem.prod_statuses.keys %>
                 <%= f.submit "更新", class: "btn btn-sm btn-primary" %>
               <% end %>
             </td>
