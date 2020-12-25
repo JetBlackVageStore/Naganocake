@@ -7,8 +7,9 @@ class Customer::IntoCartsController < ApplicationController
     @cart_items.each do |cart_item|
      quantity = cart_item.quantity.to_i
      price = cart_item.item.price_without.to_i
-     @sum = @sum + ((( price*quantity )*1.1).round(2)).ceil
+     @sum += ((price * quantity) * 1.1).round(2).ceil
     end
+   end
 
 
 
@@ -30,12 +31,12 @@ class Customer::IntoCartsController < ApplicationController
     # if IntoCart.where(customer_id: current_customer.id).find_by(item_id: params[:into_cart][:item_id]).blank?
     if IntoCart.find_by(item_id: params[:into_cart][:item_id], customer_id: current_customer.id).blank?
     cart = IntoCart.new
-    cart.customer_id=current_customer.id
-    cart.item_id=params[:into_cart][:item_id]
-    cart.quantity=params[:into_cart][:quantity]
+    cart.customer_id = current_customer.id
+    cart.item_id = params[:into_cart][:item_id]
+    cart.quantity = params[:into_cart][:quantity]
     cart.save
     else
-     cart=IntoCart.find_by(customer_id: current_customer.id, item_id: params[:into_cart][:item_id])
+     cart = IntoCart.find_by(customer_id: current_customer.id, item_id: params[:into_cart][:item_id])
      cart.quantity += params[:into_cart][:quantity].to_i
      cart.save
 
