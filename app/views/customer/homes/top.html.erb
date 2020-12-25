@@ -7,8 +7,13 @@
     </div>
     <div class="row">
       <div class="col-xs-offset-1 col-xs-10">
-        <h3>本日の注文件数</h3>
-        <%= %>
+        <h3>
+          本日の注文件数は
+          <%= link_to admin_orders_path do %>
+            <%= @today_orders.count %>
+          <% end %>
+          件です。
+        </h3>
       </div>
     </div>
   </div>

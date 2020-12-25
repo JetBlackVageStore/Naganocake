@@ -3,6 +3,8 @@ class OrderItem < ApplicationRecord
   belongs_to :order
   belongs_to :item
 
+  scope :created_today, -> { where(created_at: Time.zone.now.all_day).select(:order_id).distinct }
+
   enum prod_status: {
     製作不可: 0,
     製作待ち: 1,
