@@ -6,6 +6,7 @@ class Customer::HomesController < ApplicationController
     @genres = Genre.all
     @items = Item.all
     @item = @items.sample(RECOMMEND_ITEMS)
+    @today_orders = OrderItem.created_today
   end
 
   def about
