@@ -11,9 +11,6 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.permit(:sign_up, keys: %i[surname firstname surname_kana firstname_kana postal_code address phone_number] )
   end
 
-
-
-
   def after_sign_in_path_for(resource)
     root_path
   end

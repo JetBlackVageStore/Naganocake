@@ -1,6 +1,5 @@
 class Admin::OrdersItemsController < ApplicationController
 
-
     def update
       @order_item = OrderItem.find(params[:id])
       @order = Order.find(@order_item.order_id)
@@ -17,6 +16,6 @@ class Admin::OrdersItemsController < ApplicationController
     def order_item_params
       params.require(:order_item).permit(:order_id, :prod_status)
     end
-
+  
 
 end

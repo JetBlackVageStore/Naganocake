@@ -4,13 +4,11 @@ class Admin::OrdersController < ApplicationController
     @orders = Order.order("id DESC").page(params[:page]).per(10)
     @order_items = OrderItem.all
   end
-
   def show
     @orders = Order.all
     @order = Order.find(params[:id])
     @order_items = OrderItem.all
   end
-
   def update
     @order = Order.find(params[:id])
     @order.update(order_params)
@@ -22,11 +20,8 @@ class Admin::OrdersController < ApplicationController
     end
     redirect_to admin_order_path(@order)
   end
-
   private
   def order_params
     params.require(:order).permit(:order_status)
   end
-
-
 end
