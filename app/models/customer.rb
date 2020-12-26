@@ -9,6 +9,7 @@ class Customer < ApplicationRecord
   has_many :into_carts, dependent: :destroy
   has_many :into_items, dependent: :destroy
 
+  attachment :image
   validates :surname, :firstname, :surname_kana, :firstname_kana,
             :address, :phone_number,
             presence: true
@@ -28,12 +29,13 @@ class Customer < ApplicationRecord
   #validates :password_confirmation, presence: true
 
   validates :is_active, inclusion: { in: [true, false] }
-     
+
   enum user_status: { '有効': true, '退会済': false }
 
   def active_for_authentication?
     super && self.user_status == '有効'
   end
+
 
   #パスワードvaridate＋再確認⇨これをつけるとmypageでupdateできなくなる⇨なぜ？
   # validates :password, confirmation: true

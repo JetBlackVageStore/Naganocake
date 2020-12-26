@@ -11,11 +11,16 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.permit(:sign_up, keys: %i[surname firstname surname_kana firstname_kana postal_code address phone_number] )
   end
 
-
-
-
   def after_sign_in_path_for(resource)
     root_path
+  end
+
+  def after_sign_out_path_for(resource)
+    if resource == :admin
+      new_admin_session_path
+    else
+      root_path
+    end
   end
 
   protect_from_forgery with: :exception

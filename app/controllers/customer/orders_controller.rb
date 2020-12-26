@@ -8,7 +8,7 @@ class Customer::OrdersController < ApplicationController
 
   def show
     @order = Order.find(params[:id])
-    @order_items = OrderItem.all
+    @order_items = OrderItem.where(id: @order)
   end
 
   def create

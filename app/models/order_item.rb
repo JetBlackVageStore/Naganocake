@@ -11,5 +11,5 @@ class OrderItem < ApplicationRecord
     製作中: 2,
     製作完了: 3
   }
-
+#製作making
 end

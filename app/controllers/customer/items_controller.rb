@@ -3,7 +3,8 @@ class Customer::ItemsController < ApplicationController
 
   def index
     @genres = Genre.all
-    @items = Item.where(item_status: true).page(params[:page]).per(8)
+    @items = Item.all
+    @items_index = @items.where(item_status: true).page(params[:page]).per(8)
   end
 
   def search
@@ -14,6 +15,7 @@ class Customer::ItemsController < ApplicationController
     @items = Item.where(item_status: true).page(params[:page]).per(8)
     @item = Item.find(params[:id])
     @into_cart = IntoCart.new
+    @genres = Genre.all
   end
 
 
