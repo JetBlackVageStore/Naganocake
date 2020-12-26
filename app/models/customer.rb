@@ -9,6 +9,7 @@ class Customer < ApplicationRecord
   has_many :into_carts, dependent: :destroy
   has_many :into_items, dependent: :destroy
 
+  attachment :image
   validates :surname, :firstname, :surname_kana, :firstname_kana,
             :address, :phone_number,
             presence: true
