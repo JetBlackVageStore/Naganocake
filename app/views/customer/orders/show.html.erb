@@ -31,7 +31,7 @@
 
     <div class="col-xs-3 col-xs-offset-1 billing">
       <strong><i class="fas fa-yen-sign"></i>請求情報</strong>
-      
+
         	<table class="table  table-bordered table-condensed">
             <tr>
               <th class="info">商品合計</th>
@@ -62,7 +62,7 @@
           <% @order_items.each do |oi| %>
             <tr>
   	        <td><%= oi.item.name %></td>
-  	        <td class="text-right">800円</td>
+  	        <td class="text-right"><%= oi.item.price_without.to_s.reverse.gsub( /(\d{3})(?=\d)/, '\1,').reverse %>円</td>
   	        <td class="text-right"><%= oi.quantity %></td>
   	        <td class="text-right"><%= (oi.quantity.to_i * oi.item.price_without.to_i).to_s.reverse.gsub( /(\d{3})(?=\d)/, '\1,').reverse  %>円</td>
             </tr>
@@ -70,7 +70,7 @@
           </tbody>
         </table>
 
-     
+
     </div>
     <% if customer_signed_in? %>
       <%= link_to "注文履歴一覧へ戻る", orders_path, class: "btn btn-info btn-lg order-index-back" %>
